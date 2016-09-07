@@ -1,0 +1,6 @@
+# General settings
+data.location=~/ownCloud/Tasks/
+
+# Color Theme
+include /usr/share/taskwarrior/solarized-dark-256.theme
+
