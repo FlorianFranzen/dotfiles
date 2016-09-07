@@ -1,4 +1,4 @@
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.homesick/repos/oh-my-zsh
 export ZSH_THEME="agnoster"
 
 plugins=(bgnotify catimg common-aliases colored-man-pages history-substring-search jump git pass taskwarrior ubuntu)
