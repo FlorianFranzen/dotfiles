@@ -1,10 +1,20 @@
 export ZSH=$HOME/.homesick/repos/oh-my-zsh
 export ZSH_THEME="agnoster"
 
-plugins=(bgnotify catimg common-aliases colored-man-pages history-substring-search jump git pass taskwarrior ubuntu)
 
+plugins=(bgnotify common-aliases colored-man-pages history-substring-search jump git pass systemd taskwarrior)
+
+case "$(lsb_release -is)" in
+    Arch)
+        plugins=($plugins archlinux)  
+    ;;
+    Ubuntu)
+	plugins=($plugins ubuntu)
+    ;;	
+esac
+ 
 source $ZSH/oh-my-zsh.sh
 
-for f in ~/.zshrc.d/*.zsh; do 
-    source $f; 
+for subconf in ~/.zshrc.d/*.zsh; do 
+    source $subconf; 
 done
