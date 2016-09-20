@@ -6,3 +6,5 @@
 	program = gpg2
 [alias]
 	s = status -s
+[push]
+	default = simple
