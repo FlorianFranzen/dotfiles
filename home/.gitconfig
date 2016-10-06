@@ -1,18 +1,24 @@
 [user]
-  email = Florian.Franzen@gmail.com
-  name = Florian Franzen
-  signingkey = 549A27CC
+	email = Florian.Franzen@gmail.com
+	name = Florian Franzen
+	signingkey = 549A27CC
 [gpg]
-  program = gpg2
+	program = gpg2
 [alias]
-  s = status -s
-  default = simple
-  ignore = update-index --assume-unchanged
-  unignore = update-index --no-assume-unchanged
-  ignored = !git ls-files -v | grep "^[[:lower:]]"
+	s  = status -s
+	d  = diff
+	dt = difftool
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [push]
-  default = simple
+	default = simple
 [diff]
-  submodule = log
+	submodule = log
+	tool = vimdiff
 [status]
-  submoduleSummary = true
+	submoduleSummary = true
+[core]
+	pager = less -FRXx1,5
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
