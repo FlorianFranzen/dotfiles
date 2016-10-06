@@ -1,10 +1,18 @@
 [user]
-	email = Florian.Franzen@gmail.com
-	name = Florian Franzen
-	signingkey = 549A27CC
+  email = Florian.Franzen@gmail.com
+  name = Florian Franzen
+  signingkey = 549A27CC
 [gpg]
-	program = gpg2
+  program = gpg2
 [alias]
-	s = status -s
+  s = status -s
+  default = simple
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
 [push]
-	default = simple
+  default = simple
+[diff]
+  submodule = log
+[status]
+  submoduleSummary = true
