@@ -17,7 +17,7 @@
 [status]
 	submoduleSummary = true
 [core]
-	pager = less -FRXx1,5
+	pager = less -FRXx1,3
 [merge]
 	tool = vimdiff
 [difftool]
