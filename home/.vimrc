@@ -33,7 +33,7 @@ set ignorecase
 set smartcase
  
 " Allow backspacing over autoindent, line breaks and start of insert action
-set backspace=indent,eol,start:
+set backspace=indent,eol,start
 
 " Enable auto indent 
 set autoindent
