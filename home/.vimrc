@@ -105,3 +105,6 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Display special chars
 set listchars=eol:¬,tab:»·,trail:~,precedes:«,extends:»
 set list
+
+" Helper if one forgets sudo
+cmap w!! w !sudo tee % >/dev/null
