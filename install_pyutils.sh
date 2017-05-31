@@ -2,5 +2,3 @@ curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | pyt
 
 pipsi install pew
 pipsi install pipenv
-
-pipsi install powerline-status
