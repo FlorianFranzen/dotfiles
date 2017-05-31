@@ -1,26 +1,48 @@
-export ZSH=$HOME/.homesick/repos/oh-my-zsh
-export ZSH_THEME="agnoster"
+source ~/.homesick/repos/antigen/antigen.zsh
 
-# Base plugins
-plugins=(bgnotify common-aliases colored-man-page history-substring-search jump git pass systemd)
+antigen use oh-my-zsh
+
+# OMZ Base plugins
+antigen bundles <<EOBUNDLES
+  bgnotify
+  common-aliases
+  colored-man-page
+  git
+  systemd
+EOBUNDLES
+
+# zsh-user Base plugins
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Distribution based plugins
 case "$(lsb_release -is)" in
     Arch)
-        plugins+=archlinux
+        antigen bundle archlinux
     ;;
     Ubuntu)
-        plugins+=ubuntu
-    ;;	
+        antigen bundle ubuntu
+    ;;
 esac
 
 # Installed programms plugins
-hash docker 2>/dev/null && plugins+=docker
-hash task 2>/dev/null && plugins+=taskwarrior
+hash pass 2>/dev/null && antigen bundle pass
+hash task 2>/dev/null && antigen bundle taskwarrior
+hash docker 2>/dev/null && antigen bundle docker
+
+# Set enviroment variables
+export EDITOR=vim
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 
-source $ZSH/oh-my-zsh.sh
-
+# Load custom extensions
 for subconf in ~/.zshrc.d/*.zsh; do 
     source $subconf; 
 done
+
+# Set up theme
+antigen theme steeef
+
+# Finalize
+antigen apply
