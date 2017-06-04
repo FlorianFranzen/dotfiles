@@ -1,0 +1,4 @@
+#compdef zx
+
+_arguments "1: :_path_files -/W $HOME/.zx"
+

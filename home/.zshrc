@@ -40,6 +40,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 for subconf in ~/.zshrc.d/*.zsh; do 
     source $subconf; 
 done
+export fpath=($fpath ~/.zshrc.d)
 
 # Set up theme
 antigen theme steeef
