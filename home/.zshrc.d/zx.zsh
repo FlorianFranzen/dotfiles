@@ -1,6 +1,6 @@
 zx() {
   if [ -z "$1" ]; then
-    echo "usage: $0 <name>"
+    echo "usage: $0 <group>"
     return
   fi
 
