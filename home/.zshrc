@@ -15,6 +15,7 @@ EOBUNDLES
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle FlorianFranzen/sourcerer
 
 # Distribution based plugins
 case "$(lsb_release -is)" in
