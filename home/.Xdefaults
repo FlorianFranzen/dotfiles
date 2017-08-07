@@ -22,7 +22,7 @@
  urxvt.cutchars:        `()'*<>[]{|}"
 
 !  - use xft for drawing fonts
-urxvt*font: xft:Terminess Powerline:pixelsize=15:antialias=true
+urxvt*font: xft:Source Code Pro for Powerline:pixelsize=16:antialias=true
 
 !  - pseudo transparency
 !urxvt*shading:    50
