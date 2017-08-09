@@ -1,0 +1,37 @@
+!!! URxvt !!!
+
+! General
+URxvt.font: xft:InputMonoNarrow Nerd Font:style=Regular:pixelsize=16:antialias=true
+
+URxvt.termName:  xterm-256color
+URxvt.loginShell:         true
+URxvt.scrollBar:         false
+URxvt.secondaryScroll:    true
+URxvt.saveLines:         65535
+URxvt.cursorBlink:       false
+URxvt.urgentOnBell:       true
+
+!URxvt.*override-redirect:false
+!URxvt.*borderLess:       false
+!URxvt.*internalBorder:       0
+!URxvt.*externalBorder:       0
+
+! Extensions
+URxvt.perl-lib:        /usr/lib/urxvt/perl/
+URxvt.perl-ext-common: default,matcher,searchable-scrollback,selection-to-clipboard,clipboard-osc
+
+URxvt.urlLauncher:     /usr/bin/firefox
+URxvt.matcher.button:  1
+ 
+! catch ugly URLs
+!urxvt.cutchars:        `()''*<>[]{|}\
+
+! pseudo transparency
+!urxvt*shading:    50
+!urxvt*transparent:true
+
+!!! rofi !!!
+
+rofi.font: InputSansNarrow Nerd Font 12
+
+!rofi.fake-transparency: true
