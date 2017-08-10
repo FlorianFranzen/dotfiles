@@ -44,7 +44,7 @@ done
 export fpath=($fpath ~/.zshrc.d)
 
 # Set up theme
-antigen theme steeef
+antigen theme agnoster
 
 # Finalize
 antigen apply

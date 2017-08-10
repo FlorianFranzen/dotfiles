@@ -18,7 +18,7 @@ URxvt.urgentOnBell:       true
 
 ! Extensions
 URxvt.perl-lib:        /usr/lib/urxvt/perl/
-URxvt.perl-ext-common: default,matcher,searchable-scrollback,selection-to-clipboard,clipboard-osc
+URxvt.perl-ext-common: default,matcher,searchable-scrollback,selection-to-clipboard,clipboad-osc
 
 URxvt.urlLauncher:     /usr/bin/firefox
 URxvt.matcher.button:  1

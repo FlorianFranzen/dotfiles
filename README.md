@@ -13,4 +13,4 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/FlorianFranzen/dotfiles/
 - i3-gaps
 - polyline
 - rofi
-- wal
+- wpgtk

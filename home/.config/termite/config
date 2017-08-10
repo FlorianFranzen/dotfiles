@@ -1,0 +1,20 @@
+[options]
+allow_bold = true
+
+audible_bell = false
+
+clickable_url = true
+
+dynamic_title = true
+
+font = InputMonoNarrow Nerd Font 12
+
+scrollback_lines = 10000
+
+urgent_on_bell = true
+
+cursor_blink = system
+
+cursor_shape = ibeam
+
+# vim: ft=dosini cms=#%s
