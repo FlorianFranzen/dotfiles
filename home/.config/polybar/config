@@ -218,8 +218,8 @@ label-connected = %essid%
 label-disconnected = -.-.-.-
 label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 =  
-ramp-signal-1 =  
+ramp-signal-0 = 
+ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-foreground = ${colors.foreground-alt}
@@ -321,12 +321,13 @@ type = custom/script
 interval = 5
 
 exec = ~/.config/polybar/compton.sh
-;click-left = ~/.config/polybar/compton-toggle.sh
+click-left = ~/.config/polybar/compton-toggle.sh
 
 [module/redshift]
 type = custom/script
 interval = 5
 
 exec = ~/.config/polybar/redshift.sh
+click-left = ~/.config/polybar/redshift-toggle.sh
 
 ; vim:ft=dosini
