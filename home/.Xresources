@@ -33,5 +33,6 @@ URxvt.matcher.button:  1
 !!! rofi !!!
 
 rofi.font: InputSansNarrow Nerd Font 12
+rofi.color-enabled: true
 
 !rofi.fake-transparency: true

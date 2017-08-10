@@ -15,7 +15,7 @@ fi
 
 # OPTIONAL: Append ' ${temp}K' after $icon
 if [[ -z $temp ]]; then
-    echo "%{F$COLOR8}$icon"
+    echo "%{F$COLOR6}$icon"
 else
     echo "%{F$COLOR7}$icon"
 fi
