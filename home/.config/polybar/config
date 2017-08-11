@@ -34,8 +34,9 @@ alert = ${xrdb:color5}
 margin-top = 0
 margin-bottom = 0
 
-[bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/common]
+monitor-strict = true
+
 width = 100%
 height = 24
 
@@ -47,45 +48,89 @@ foreground = ${colors.foreground}
 overline-size = 0
 underline-size = 2
 
-border-size = 5
+border-left-size = 5
+border-right-size = 5
 
 padding-left = 0
 padding-right = 1
 module-margin = 1
 
-font-0 = InputSansNarrow Nerd Font:style=Regular:size=10
-font-1 = material\-wifi:style=Regular
-
-modules-left = i3 compton redshift xwindow
-modules-center = mpd
-modules-right = xbacklight volume cpu memory temperature mail wlan eth battery date
-
-tray-position = right
-tray-padding = 5
-;tray-transparent = true
-;tray-background = #0063ff
-
 ;wm-restack = i3
 ;override-redirect = true
 
+font-0 = InputSansNarrow Nerd Font:style=Regular:size=10
+font-1 = material\-wifi:style=Regular
+
+;tray-background = ${colors.primary}
+
+
+[bar/full]
+inherit = bar/common
+
+monitor = ${env:MONITOR:DP2-1}
+
+border-top-size = 5
+
+modules-left = i3 compton redshift xwindow
+modules-center = mpd
+modules-right = mail cpu temp mem fs lan wlan vol date
+
+tray-position = right
+tray-padding = 5
+
+
+[bar/top]
+inherit = bar/common
+
+monitor = ${env:MONITOR:eDP1}
+
+border-top-size = 5
+
+modules-left = i3 compton redshift
+modules-center = xwindow
+modules-right = vol bat0 bat1 date
+
+tray-position = right
+tray-padding = 2
+
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
+
+[bar/bottom]
+inherit = bar/common
+
+monitor = ${env:MONITOR:eDP1}
+
+bottom = true
+
+border-bottom-size = 5
+
+padding-left = 1
+
+modules-left = mpd
+modules-center = lan wlan
+modules-right = cpu temp mem fs
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:50:...%
 
-[module/filesystem]
+[module/fs]
 type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home
-mount-2 = /invalid/mountpoint
+;mount-1 = /home
 
-label-mounted = %mountpoint%: %percentage_free%%
+format-mounted-prefix= " "
+format-mounted-prefix-foreground = ${colors.foreground-alt}
 
-label-unmounted = %mountpoint%: not mounted
+label-mounted = %used% / %free%
+
+format-unmounted-prefix= " "
+format-unmounted-prefix-foreground = ${colors.foreground-alt}
+
+label-unmounted = --%
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
@@ -102,13 +147,13 @@ label-focused = %index%
 label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
-label-focused-padding = 2 
+label-focused-padding = 2
 
 label-unfocused = %index%
 label-unfocused-foreground = ${colors.foreground-alt}
 label-unfocused-padding = 2
 
-label-urgent = %index%!
+label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -138,7 +183,7 @@ type = internal/backlight
 card = intel_backlight
 
 
-[module/volume]
+[module/vol]
 type = internal/volume
 
 format-volume = <label-volume>
@@ -158,10 +203,10 @@ label-muted = --
 [module/mpd]
 type = internal/mpd
 
-format-online = <label-song>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <label-song>  <label-time>  <icon-repeat> <icon-random>
 
-label-song-maxlen = 25
-label-song-ellipsis = true
+;label-song-maxlen = 25
+;label-song-ellipsis = true
 
 icon-prev = 
 icon-seekb = 
@@ -184,15 +229,15 @@ interval = 5
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.secondary}
-label = %percentage%%
+label = %percentage-cores%
 
-[module/memory]
+[module/mem]
 type = internal/memory
 interval = 5
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.secondary}
-label = %percentage_used%%
+label = %gb_used% / %gb_free%
 
 [module/mail]
 type = custom/script
@@ -211,8 +256,11 @@ interval = 5
 format-connected = <ramp-signal> <label-connected>
 ;format-connected-underline = ${colors.tertiary}
 
-label-connected = %essid%
+label-connected = %essid% %local_ip% %upspeed% %downspeed%
 
+
+format-disconnected-prefix = " "
+format-disconnected-prefix-foreground = ${colors.foreground-alt}
 ;format-disconnected-underline = ${colors.quaternary}
 
 label-disconnected = -.-.-.-
@@ -224,7 +272,7 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/eth]
+[module/lan]
 type = internal/network
 interface = enp0s25
 interval = 5
@@ -234,7 +282,7 @@ format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 format-connected-foreground-foreground = ${colors.foreground-alt}
 
-label-connected = %local_ip%
+label-connected = %local_ip% %upspeed% %downspeed%
 
 format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.foreground-alt}
@@ -244,29 +292,18 @@ format-disconnected-foreground-foreground = ${colors.foreground-alt}
 label-disconnected =  -.-.-.-
 label-disconnected-foreground = ${colors.foreground-alt}
 
-[module/battery]
+[module/bat0]
 type = internal/battery
+
 battery = BAT0
-adapter = ADP1
-full-at = 98
+adapter = AC
+full-at = 95
+
+time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
 ;format-charging-underline = ${colors.quaternary}
-
-format-discharging = <ramp-capacity> <label-discharging>
-;format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-;format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.alert}
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+label-charging = %percentage%% (%time%)
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -276,14 +313,38 @@ animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-[module/temperature]
+format-discharging = <ramp-capacity> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
+label-discharging = %percentage%% (%time%)
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+;format-full-underline = ${self.format-charging-underline}i
+
+label-full = %percentage%% 
+
+
+[module/bat1]
+inherit = module/bat0
+
+battery = BAT1
+
+
+[module/temp]
 type = internal/temperature
 thermal-zone = 0
 
 warn-temperature = 60
 
 format = <ramp> <label>
-;format-charging-underline = 
 ;format-underline = ${colors.secondary}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${colors.alert}

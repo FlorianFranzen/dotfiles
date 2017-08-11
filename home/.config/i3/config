@@ -190,3 +190,6 @@ focus_follows_mouse no
 # Set up gaps
 gaps inner 5
 gaps outer 0
+
+# Last but not least, run startup scripts
+exec $HOME/.config/startr/host.sh
