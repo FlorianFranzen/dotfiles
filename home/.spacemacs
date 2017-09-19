@@ -47,6 +47,7 @@ values."
      ;; Language layes
      c-c++
      python
+     octave
      ;;ipython-notebook
      markdown
      org
