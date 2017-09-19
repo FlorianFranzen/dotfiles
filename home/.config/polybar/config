@@ -7,6 +7,9 @@
 ;
 ;=====================================================
 
+[settings]
+screenchange-reload = true
+
 [colors]
 color0=${xrdb:color0:#000000}
 color1=${xrdb:color1:#000000}
@@ -19,16 +22,16 @@ color7=${xrdb:color7:#000000}
 color8=${xrdb:color8:#000000}
 
 background     = ${colors.color0}
-background-alt = ${colors.color8}
+background-alt = ${colors.color1}
 foreground     = ${colors.color7}
 foreground-alt = ${colors.color6}
 
-primary    = ${colors.color4}
-secondary  = ${colors.color3}
-tertiary   = ${colors.color2}
-quaternary = ${colors.color1}
+primary    = ${colors.color5}
+secondary  = ${colors.color4}
+tertiary   = ${colors.color3}
+quaternary = ${colors.color2}
 
-alert = ${xrdb:color5}
+alert = ${xrdb:color8}
 
 [global/wm]
 margin-top = 0
@@ -45,7 +48,7 @@ separator = 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-overline-size = 0
+overline-size = 2
 underline-size = 2
 
 border-left-size = 5
@@ -146,7 +149,8 @@ label-mode-background = ${colors.background}
 label-focused = %index%
 label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.primary}
+label-focused-overline = ${colors.quaternary}
+label-focused-underline = ${colors.quaternary}
 label-focused-padding = 2
 
 label-unfocused = %index%
@@ -158,7 +162,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 label-visible = %index%
-;label-visible-background = ${self.label-unfocused-background}
+label-visible-background = ${colors.tertiary}
 label-visible-underline = ${colors.secondary}
 label-visible-padding = 2}
 
@@ -204,6 +208,9 @@ label-muted = --
 type = internal/mpd
 
 format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <label-song>  <label-time>  <icon-repeat> <icon-random>
+format-playing = ${self.format-online}
+format-paused = ${self.format-online}
+format-stopped = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> -- <icon-repeat> <icon-random>
 
 ;label-song-maxlen = 25
 ;label-song-ellipsis = true
@@ -305,11 +312,10 @@ format-charging = <animation-charging> <label-charging>
 ;format-charging-underline = ${colors.quaternary}
 label-charging = %percentage%% (%time%)
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
