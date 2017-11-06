@@ -16,11 +16,11 @@ set_from_resource $color7 i3wm.color7 #ffffff
 set_from_resource $color8 i3wm.color8 #888888
 
 # class                 border  backgr. text    indic.   child_border
-client.focused          $color1 $color0 $color7 $color6  $color0
-client.focused_inactive $color3 $color0 $color7 $color6  $color0
-client.unfocused        $color3 $color0 $color7 $color6  $color0
-client.urgent           $color4 $color0 $color7 $color6  $color0
-client.placeholder      $color5 $color0 $color7 $color6  $color0
+client.focused          $color4 $color0 $color7 $color6  $color4
+client.focused_inactive $color3 $color0 $color7 $color6  $color3
+client.unfocused        $color2 $color0 $color7 $color6  $color2
+client.urgent           $color5 $color0 $color7 $color6  $color5
+client.placeholder      $color1 $color0 $color7 $color6  $color1
 
 client.background       $color0
 
@@ -191,7 +191,7 @@ bindsym $mod+r mode "resize"
 # Desktop ten is our floating desktop
 for_window [workspace="10"] floating enable
 
-# Disable all borders
+# Set up small borders
 for_window [class="^.*"] border pixel 2
 
 # Mouse settings
