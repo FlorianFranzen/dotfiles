@@ -188,21 +188,16 @@ card = intel_backlight
 
 
 [module/vol]
-type = internal/volume
-
-format-volume = <label-volume>
-format-volume-prefix= " "
-format-volume-prefix-foreground = ${colors.foreground-alt}
-;format-volume-underline = ${colors.primary}
-
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-;format-muted-underline = ${colors.secondary}
-
-label-muted = --
-
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/pavol.sh --listen
+#exec-if = pacmd list-sinks | grep -q available
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/pavol.sh --toggle
+scroll-up = ~/.config/polybar/pavol.sh --up
+scroll-down = ~/.config/polybar/pavol.sh --down
+#label-foreground = ${root.foreground}
 
 [module/mpd]
 type = internal/mpd

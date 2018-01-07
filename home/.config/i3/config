@@ -145,9 +145,9 @@ bindsym $mod+Shift+l exec $HOME/.config/i3/lock.sh
 bindsym $mod+Shift+w exec wpg -m && i3-msg restart
 
 # Volume control
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
+bindsym XF86AudioRaiseVolume exec $HOME/.config/polybar/pavol.sh --up
+bindsym XF86AudioMute exec $HOME/.config/polybar/pavol.sh --toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # MPD control
