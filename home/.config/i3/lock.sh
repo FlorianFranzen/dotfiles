@@ -14,4 +14,5 @@ exec i3lock --timecolor=${COLOR15:1}FF \
             --insidewrongcolor=${COLOR12:1}AA \
             --linecolor=${COLOR2:1}EE \
             --separatorcolor=${COLOR3:1}EE \
-            -k --blur 3
+            -k --blur 3 \
+            --nofork
