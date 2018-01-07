@@ -49,6 +49,7 @@ values."
      c-c++
      python
      octave
+     extra-langs
      ;;ipython-notebook
      markdown
      org
