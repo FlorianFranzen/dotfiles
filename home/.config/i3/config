@@ -2,7 +2,7 @@
 exec redshift
 
 # Generate or load color sheme and background
-exec $HOME/.wallpapers/wp_init.sh
+exec --no-startup-id $HOME/.wallpapers/wp_init.sh
 
 # Set colors from Xresources
 set_from_resource $color0 i3wm.color0 #000000
@@ -28,7 +28,7 @@ client.background       $color0
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start window composer
-exec_always $HOME/.config/i3/compton.sh
+exec_always --no-startup-id $HOME/.config/i3/compton.sh
 
 # Alt is our modifier key
 set $mod Mod1
