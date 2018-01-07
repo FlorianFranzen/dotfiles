@@ -9,5 +9,5 @@ if pgrep -x "compton" > /dev/null
 then
 	echo "%{F$COLOR7}$icon"
 else
-	echo "%{F$COLOR6}$icon"
+	echo "%{F$COLOR5}$icon"
 fi
