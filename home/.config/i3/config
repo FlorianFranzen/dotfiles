@@ -142,7 +142,7 @@ bindsym $mod+Shift+e exec $HOME/.config/i3/exit.sh
 bindsym $mod+Shift+l exec $HOME/.config/i3/lock.sh
 
 # Retheme desktop
-bindsym $mod+Shift+w exec wpg -m && i3-msg restart
+bindsym $mod+Shift+t exec wpg -m && i3-msg restart
 
 # Volume control
 bindsym XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
