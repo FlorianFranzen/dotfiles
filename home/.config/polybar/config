@@ -70,7 +70,7 @@ font-1 = material\-wifi:style=Regular
 [bar/full]
 inherit = bar/common
 
-monitor = ${env:MONITOR:DP2-1}
+monitor = ${env:MONITOR:DP-2-1}
 
 border-top-size = 5
 
@@ -85,7 +85,7 @@ tray-padding = 5
 [bar/top]
 inherit = bar/common
 
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:eDP-1}
 
 border-top-size = 5
 
@@ -102,7 +102,7 @@ tray-padding = 2
 [bar/bottom]
 inherit = bar/common
 
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:eDP-1}
 
 bottom = true
 
