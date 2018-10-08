@@ -12,26 +12,27 @@ screenchange-reload = true
 
 [colors]
 color0=${xrdb:color0:#000000}
-color1=${xrdb:color1:#000000}
-color2=${xrdb:color2:#000000}
-color3=${xrdb:color3:#000000}
-color4=${xrdb:color4:#000000}
-color5=${xrdb:color5:#000000}
-color6=${xrdb:color6:#000000}
-color7=${xrdb:color7:#000000}
-color8=${xrdb:color8:#000000}
+color1=${xrdb:color1:#020202}
+color2=${xrdb:color2:#040404}
+color3=${xrdb:color3:#080808}
+color4=${xrdb:color4:#101010}
+color5=${xrdb:color5:#202020}
+color6=${xrdb:color6:#400040}
+color7=${xrdb:color7:#FFFFFF}
+color8=${xrdb:color8:#808080}
+
 
 background     = ${colors.color0}
 background-alt = ${colors.color1}
 foreground     = ${colors.color7}
-foreground-alt = ${colors.color5}
+foreground-alt = ${colors.color6}
 
-primary    = ${colors.color6}
+primary    = ${colors.color5}
 secondary  = ${colors.color4}
 tertiary   = ${colors.color3}
 quaternary = ${colors.color2}
 
-alert = ${xrdb:color8}
+alert = ${colors.color8}
 
 [global/wm]
 margin-top = 0
@@ -76,7 +77,7 @@ border-top-size = 5
 
 modules-left = i3 compton redshift xwindow
 modules-center = mpd
-modules-right = mail cpu temp mem fs lan wlan vol date
+modules-right = cpu temp mem fs lan wlan vol date
 
 tray-position = right
 tray-padding = 5

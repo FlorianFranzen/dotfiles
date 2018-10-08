@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # Load current color scheme
-source "$HOME/.colors"
+SHELL_color_THEME="$HOME/.cache/wal/colors.sh"
+if [ -e "$SHELL_color_THEME" ]; then 
+  source "$SHELL_color_THEME"
+fi
 
 # finds the active sink for pulse audio and increments the volume. useful when you have multiple audio outputs and have a key bound to vol-up and down
 
@@ -153,9 +156,9 @@ function output() {
     volMuteStatus
     if [ "${curStatus}" = 'yes' ]
     then
-        echo "%{F$COLOR5} %{F$COLOR5}$curVol%"
+        echo "%{F$color5} %{F$color5}$curVol%"
     else
-        echo "%{F$COLOR5} %{F$COLOR7}$curVol%"
+        echo "%{F$color5} %{F$color7}$curVol%"
     fi
 } #}}}
 

@@ -1,20 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-source "$HOME/.colors"
+SHELL_COLOR_THEME="$HOME/.cache/wal/colors.sh"
+if [ -e "$SHELL_COLOR_THEME" ]; then 
+  source "$SHELL_COLOR_THEME"
+fi
 
 # Specifying the icon(s) in the script
 # This allows us to change its appearance conditionally
 icon=""
 
-
-pgrep -x redshift &> /dev/null
-if [[ $? -eq 0 ]]; then
-    temp=$(redshift -p 2>/dev/null | grep temp | cut -d' ' -f3)
-    temp=${temp//K/}
-fi
-
-# OPTIONAL: Append ' ${temp}K' after $icon
-if [[ -z $temp ]]; then
+if systemctl is-active --user --quiet redshift; then
     echo "%{F$COLOR5}$icon"
 else
     echo "%{F$COLOR7}$icon"

@@ -1,8 +1,7 @@
 #!/bin/sh
 
-if pgrep -x "compton" > /dev/null
-then
-  killall compton
+if systemctl is-active --user --quiet compton; then
+  systemctl stop --user compton
 else
-  compton -b
+  systemctl start --user compton
 fi

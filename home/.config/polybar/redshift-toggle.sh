@@ -1,8 +1,7 @@
 #!/bin/sh
 
-if pgrep -x "redshift" > /dev/null
-then
-  killall redshift
+if systemctl is-active --user --quiet redshift; then
+  systemctl stop --user redshift
 else
-  setsid redshift >/dev/null 2>&1 < /dev/null &
+  systemctl start --user redshift
 fi

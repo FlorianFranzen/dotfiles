@@ -1,18 +1,18 @@
-#!/bin/bash
-source ~/.colors
+#!/usr/bin/env bash
+source ~/.cache/wal/colors.sh
 
-exec i3lock --timecolor=${COLOR15:1}FF \
-            --datecolor=${COLOR15:1}FF \
-            --textcolor=${COLOR15:1}FF \
-            --ringcolor=${COLOR13:1}DD \
-            --insidecolor=${COLOR1:1}AA \
-            --keyhlcolor=${COLOR15:1}EE \
-            --bshlcolor=${COLOR14:1}EE \
-            --ringvercolor=${COLOR8:1}DD \
-            --insidevercolor=${COLOR8:1}AA \
-            --ringwrongcolor=${COLOR12:1}DD \
-            --insidewrongcolor=${COLOR12:1}AA \
-            --linecolor=${COLOR2:1}EE \
-            --separatorcolor=${COLOR3:1}EE \
+exec i3lock-color --timecolor=${color15:1}FF \
+                  --datecolor=${color15:1}FF \
+            --textcolor=${color15:1}FF \
+            --ringcolor=${color13:1}DD \
+            --insidecolor=${color1:1}AA \
+            --keyhlcolor=${color15:1}EE \
+            --bshlcolor=${color14:1}EE \
+            --ringvercolor=${color8:1}DD \
+            --insidevercolor=${color8:1}AA \
+            --ringwrongcolor=${color12:1}DD \
+            --insidewrongcolor=${color12:1}AA \
+            --linecolor=${color2:1}EE \
+            --separatorcolor=${color3:1}EE \
             -k --blur 3 \
             --nofork

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 OPTIONS="Exit window manager\nReboot system\nShutdown system\nSuspend system\nHibernate system"
 

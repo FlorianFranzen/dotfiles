@@ -36,5 +36,6 @@ rofi.font: InputSansNarrow Nerd Font 12
 rofi.color-enabled: true
 rofi.modi: window,run,drun,ssh
 rofi.sidebar-mode: true
+rofi.theme: ~/.cache/wal/colors-rofi-light.rasi
 
 !rofi.fake-transparency: true

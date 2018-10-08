@@ -1,8 +1,5 @@
-# Start day/night color correction
-exec redshift
-
 # Generate or load color sheme and background
-exec --no-startup-id $HOME/.wallpapers/wp_init.sh
+exec --no-startup-id wal -R
 
 # Set colors from Xresources
 set_from_resource $color0 i3wm.color0 #000000
@@ -13,7 +10,7 @@ set_from_resource $color4 i3wm.color4 #101010
 set_from_resource $color5 i3wm.color5 #202020
 set_from_resource $color6 i3wm.color6 #404040
 set_from_resource $color7 i3wm.color7 #ffffff
-set_from_resource $color8 i3wm.color8 #888888
+set_from_resource $color8 i3wm.color8 #808080
 
 # class                 border  backgr. text    indic.   child_border
 client.focused          $color4 $color0 $color7 $color6  $color4
@@ -27,11 +24,9 @@ client.background       $color0
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# Start window composer
-exec_always --no-startup-id $HOME/.config/i3/compton.sh
-
-# Alt is our modifier key
-set $mod Mod1
+# Super is our modifier key
+set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -60,8 +55,8 @@ bindsym $mod+Delete exec thunar
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+d exec rofi -show run
-bindsym $mod+Shift+d exec rofi -show drun
+bindsym $mod+space exec rofi -show run
+bindsym $mod+d exec rofi -show drun
 
 # start clerk
 bindsym $mod+m exec clerk
@@ -93,10 +88,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $alt+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $alt+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -104,20 +99,17 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-
 # Switch to workspace like xmonad
-set $wss exec --no-startup-id $HOME/.config/i3/wss.py
-bindsym $mod+1 $wss 1
-bindsym $mod+2 $wss 2
-bindsym $mod+3 $wss 3
-bindsym $mod+4 $wss 4
-bindsym $mod+5 $wss 5
-bindsym $mod+6 $wss 6
-bindsym $mod+7 $wss 7
-bindsym $mod+8 $wss 8
-bindsym $mod+9 $wss 9
-bindsym $mod+0 $wss 10
-
+bindsym $mod+1 [workspace=1] move workspace to output current; workspace 1
+bindsym $mod+2 [workspace=2] move workspace to output current; workspace 2
+bindsym $mod+3 [workspace=3] move workspace to output current; workspace 3
+bindsym $mod+4 [workspace=4] move workspace to output current; workspace 4
+bindsym $mod+5 [workspace=5] move workspace to output current; workspace 5
+bindsym $mod+6 [workspace=6] move workspace to output current; workspace 6
+bindsym $mod+7 [workspace=7] move workspace to output current; workspace 7
+bindsym $mod+8 [workspace=8] move workspace to output current; workspace 8
+bindsym $mod+9 [workspace=9] move workspace to output current; workspace 9
+bindsym $mod+0 [workspace=0] move workspace to output current; workspace 0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -142,7 +134,7 @@ bindsym $mod+Shift+e exec $HOME/.config/i3/exit.sh
 bindsym $mod+Shift+l exec $HOME/.config/i3/lock.sh
 
 # Retheme desktop
-bindsym $mod+Shift+t exec wpg -m && i3-msg restart
+#bindsym $mod+Shift+t exec wpg -m && i3-msg restart
 
 # Volume control
 bindsym XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
@@ -169,12 +161,6 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
