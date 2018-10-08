@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Load current color scheme
-SHELL_color_THEME="$HOME/.cache/wal/colors.sh"
-if [ -e "$SHELL_color_THEME" ]; then 
-  source "$SHELL_color_THEME"
+SHELL_COLOR_THEME="$HOME/.cache/wal/colors.sh"
+if [ -e "$SHELL_COLOR_THEME" ]; then 
+  source "$SHELL_COLOR_THEME"
 fi
 
 # finds the active sink for pulse audio and increments the volume. useful when you have multiple audio outputs and have a key bound to vol-up and down

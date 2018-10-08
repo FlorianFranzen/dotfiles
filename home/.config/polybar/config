@@ -7,9 +7,6 @@
 ;
 ;=====================================================
 
-[settings]
-screenchange-reload = true
-
 [colors]
 color0=${xrdb:color0:#000000}
 color1=${xrdb:color1:#020202}
@@ -20,7 +17,6 @@ color5=${xrdb:color5:#202020}
 color6=${xrdb:color6:#400040}
 color7=${xrdb:color7:#FFFFFF}
 color8=${xrdb:color8:#808080}
-
 
 background     = ${colors.color0}
 background-alt = ${colors.color1}
@@ -34,12 +30,21 @@ quaternary = ${colors.color2}
 
 alert = ${colors.color8}
 
+[hardware]
+ethernet = enp0s31f6
+wireless = wlp3s0
+
+[settings]
+screenchange-reload = true
+
 [global/wm]
 margin-top = 0
 margin-bottom = 0
 
 [bar/common]
 monitor-strict = true
+
+enable-ipc = true
 
 width = 100%
 height = 24
@@ -55,23 +60,19 @@ underline-size = 2
 border-left-size = 5
 border-right-size = 5
 
-padding-left = 0
+padding-left = 1
 padding-right = 1
 module-margin = 1
 
 ;wm-restack = i3
 ;override-redirect = true
 
-font-0 = InputSansNarrow Nerd Font:style=Regular:size=10
-font-1 = material\-wifi:style=Regular
-
-;tray-background = ${colors.primary}
-
+font-0 = InputSansNarrow Nerd Font:size=12
 
 [bar/full]
 inherit = bar/common
 
-monitor = ${env:MONITOR:DP-2-1}
+monitor = ${env:MONITOR:DP2-2}
 
 border-top-size = 5
 
@@ -82,11 +83,10 @@ modules-right = cpu temp mem fs lan wlan vol date
 tray-position = right
 tray-padding = 5
 
-
 [bar/top]
 inherit = bar/common
 
-monitor = ${env:MONITOR:eDP-1}
+monitor = ${env:MONITOR:eDP1}
 
 border-top-size = 5
 
@@ -103,13 +103,13 @@ tray-padding = 2
 [bar/bottom]
 inherit = bar/common
 
-monitor = ${env:MONITOR:eDP-1}
+monitor = ${env:MONITOR:eDP1}
 
 bottom = true
 
-border-bottom-size = 5
+border-bottom-size = 20
 
-padding-left = 1
+fixed-center = true
 
 modules-left = mpd
 modules-center = lan wlan
@@ -117,7 +117,6 @@ modules-right = cpu temp mem fs
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:50:...%
 
 [module/fs]
 type = internal/fs
@@ -131,7 +130,7 @@ format-mounted-prefix-foreground = ${colors.foreground-alt}
 
 label-mounted = %used% / %free%
 
-format-unmounted-prefix= " "
+format-unmounted-prefix= " "
 format-unmounted-prefix-foreground = ${colors.foreground-alt}
 
 label-unmounted = --%
@@ -139,6 +138,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
+
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
@@ -167,14 +167,12 @@ label-visible-background = ${colors.tertiary}
 label-visible-underline = ${colors.secondary}
 label-visible-padding = 2}
 
-
-[module/xbacklight]
+[module/backlight]
 type = internal/xbacklight
 
 format = <label>
 format-prefix= " "
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.primary}
 
 ramp-0 = 🌕
 ramp-1 = 🌔
@@ -183,13 +181,13 @@ ramp-3 = 🌒
 ramp-4 = 🌑
 
 [module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
+inherit = module/backlight
 card = intel_backlight
-
 
 [module/vol]
 type = custom/script
+interval = 5
+
 tail = true
 label = %output%
 exec = ~/.config/polybar/pavol.sh --listen
@@ -198,7 +196,6 @@ click-right = exec pavucontrol
 click-left = ~/.config/polybar/pavol.sh --toggle
 scroll-up = ~/.config/polybar/pavol.sh --up
 scroll-down = ~/.config/polybar/pavol.sh --down
-#label-foreground = ${root.foreground}
 
 [module/mpd]
 type = internal/mpd
@@ -225,87 +222,76 @@ icon-repeat = 
 toggle-on-foreground = ${colors.foreground}
 toggle-off-foreground = ${colors.foreground-alt}
 
-
 [module/cpu]
 type = internal/cpu
 interval = 5
+
+format = <ramp-coreload>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.secondary}
-label = %percentage-cores%
+
+ramp-coreload-foreground = ${colors.primary} 
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
 
 [module/mem]
 type = internal/memory
 interval = 5
+
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.secondary}
 label = %gb_used% / %gb_free%
-
-[module/mail]
-type = custom/script
-interval = 10
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-exec = ~/.config/polybar/mail.py
 
 [module/wlan]
 type = internal/network
-
-interface = wlp3s0
 interval = 5
+interface = ${hardware.wireless}
 
-format-connected = <ramp-signal> <label-connected>
-;format-connected-underline = ${colors.tertiary}
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
 
-label-connected = %essid% %local_ip% %upspeed% %downspeed%
-
+label-connected = %local_ip% (%essid%)
 
 format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.foreground-alt}
-;format-disconnected-underline = ${colors.quaternary}
 
 label-disconnected = -.-.-.-
 label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
 [module/lan]
 type = internal/network
-interface = enp0s25
 interval = 5
+interface = ${hardware.ethernet}
 
-;format-connected-underline = ${colors.tertiary}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-format-connected-foreground-foreground = ${colors.foreground-alt}
 
-label-connected = %local_ip% %upspeed% %downspeed%
+label-connected = %local_ip% (%linkspeed%)
 
 format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.foreground-alt}
-;format-disconnected-underline = ${colors.quaternary}
-format-disconnected-foreground-foreground = ${colors.foreground-alt}
 
 label-disconnected =  -.-.-.-
 label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/bat0]
 type = internal/battery
+interval = 5
 
 battery = BAT0
 adapter = AC
-full-at = 95
+full-at = 94
 
 time-format = %H:%M
 
 format-charging = <animation-charging> <label-charging>
-;format-charging-underline = ${colors.quaternary}
 label-charging = %percentage%% (%time%)
 
 animation-charging-0 = 
@@ -316,7 +302,6 @@ animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
 format-discharging = <ramp-capacity> <label-discharging>
-;format-discharging-underline = ${self.format-charging-underline}
 label-discharging = %percentage%% (%time%)
 
 ramp-capacity-0 = 
@@ -329,32 +314,29 @@ ramp-capacity-foreground = ${colors.foreground-alt}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-;format-full-underline = ${self.format-charging-underline}i
 
-label-full = %percentage%% 
-
+label-full = %percentage%%
 
 [module/bat1]
 inherit = module/bat0
 
 battery = BAT1
 
-
 [module/temp]
 type = internal/temperature
-thermal-zone = 0
+interval = 5
+
+thermal-zone = 5
 
 warn-temperature = 60
 
 format = <ramp> <label>
-;format-underline = ${colors.secondary}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${colors.alert}
 
 label = %temperature%
 label-warn = %temperature%!
 label-warn-foreground = ${colors.alert}
-;label-warn-background = ${colors.background-alt}
 
 ramp-0 = 
 ramp-1 = 
@@ -375,7 +357,6 @@ time-alt = %H:%M:%S
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = ${colors.quaternary}
 
 label = %date% %time%
 
