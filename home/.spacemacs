@@ -311,8 +311,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq python-shell-interpreter "/usr/bin/python3")
-  )
-
+  (setq python-shell-interpreter "/usr/bin/env python3")
+  (setq neo-theme 'icons)
+)
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
