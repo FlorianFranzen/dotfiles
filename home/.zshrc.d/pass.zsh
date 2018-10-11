@@ -1,1 +1,1 @@
-export PASSWORD_STORE_DIR=$HOME/ownCloud/Dictionary
+export PASSWORD_STORE_DIR=$HOME/Nextcloud/Dictionary
