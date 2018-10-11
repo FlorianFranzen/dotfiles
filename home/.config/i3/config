@@ -12,12 +12,14 @@ set_from_resource $color6 i3wm.color6 #404040
 set_from_resource $color7 i3wm.color7 #ffffff
 set_from_resource $color8 i3wm.color8 #808080
 
+
+# Set up color scheme
 # class                 border  backgr. text    indic.   child_border
-client.focused          $color4 $color0 $color7 $color6  $color4
-client.focused_inactive $color3 $color0 $color7 $color6  $color3
-client.unfocused        $color2 $color0 $color7 $color6  $color2
-client.urgent           $color5 $color0 $color7 $color6  $color5
-client.placeholder      $color1 $color0 $color7 $color6  $color1
+client.focused          $color5 $color0 $color7 $color6  $color4
+client.focused_inactive $color4 $color0 $color7 $color6  $color3
+client.unfocused        $color3 $color0 $color7 $color6  $color2
+client.urgent           $color8 $color0 $color7 $color8  $color6
+client.placeholder      $color2 $color0 $color7 $color6  $color1
 
 client.background       $color0
 
@@ -28,20 +30,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 set $mod Mod4
 set $alt Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# Font for window titles. 
+#font pango:monospace 8
 #font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -100,16 +91,16 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Switch to workspace like xmonad
-bindsym $mod+1 [workspace=1] move workspace to output current; workspace 1
-bindsym $mod+2 [workspace=2] move workspace to output current; workspace 2
-bindsym $mod+3 [workspace=3] move workspace to output current; workspace 3
-bindsym $mod+4 [workspace=4] move workspace to output current; workspace 4
-bindsym $mod+5 [workspace=5] move workspace to output current; workspace 5
-bindsym $mod+6 [workspace=6] move workspace to output current; workspace 6
-bindsym $mod+7 [workspace=7] move workspace to output current; workspace 7
-bindsym $mod+8 [workspace=8] move workspace to output current; workspace 8
-bindsym $mod+9 [workspace=9] move workspace to output current; workspace 9
-bindsym $mod+0 [workspace=0] move workspace to output current; workspace 0
+bindsym $mod+1 [workspace=1]  move workspace to output current; workspace 1
+bindsym $mod+2 [workspace=2]  move workspace to output current; workspace 2
+bindsym $mod+3 [workspace=3]  move workspace to output current; workspace 3
+bindsym $mod+4 [workspace=4]  move workspace to output current; workspace 4
+bindsym $mod+5 [workspace=5]  move workspace to output current; workspace 5
+bindsym $mod+6 [workspace=6]  move workspace to output current; workspace 6
+bindsym $mod+7 [workspace=7]  move workspace to output current; workspace 7
+bindsym $mod+8 [workspace=8]  move workspace to output current; workspace 8
+bindsym $mod+9 [workspace=9]  move workspace to output current; workspace 9
+bindsym $mod+0 [workspace=10] move workspace to output current; workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -127,7 +118,11 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+
+# restart polybar
+bindsym $mod+Shift+p exec polybar-msg cmd restart
+
+# Logout and shutdown
 bindsym $mod+Shift+e exec $HOME/.config/i3/exit.sh
 
 # Lock screen
@@ -151,6 +146,7 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
+# Toggle trackpad
 bindsym XF86Tools exec syntoggle
 
 # resize window (you can also use the mouse for that)
@@ -175,7 +171,7 @@ bindsym $mod+r mode "resize"
 
 
 # Desktop ten is our floating desktop
-for_window [workspace="10"] floating enable
+for_window [workspace=10] floating enable
 
 # Set up small borders
 for_window [class="^.*"] border pixel 2
@@ -184,8 +180,8 @@ for_window [class="^.*"] border pixel 2
 focus_follows_mouse no
 
 # Set up gaps
-gaps inner 5
-gaps outer 0
+gaps inner 20
+gaps outer 0 
 
 # Last but not least, run startup scripts
 exec $HOME/.config/startr/host.sh

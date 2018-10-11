@@ -1,12 +1,4 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
-
+; Color variables
 [colors]
 color0=${xrdb:color0:#000000}
 color1=${xrdb:color1:#020202}
@@ -30,24 +22,31 @@ quaternary = ${colors.color2}
 
 alert = ${colors.color8}
 
+
+; Hardware variables
 [hardware]
 ethernet = enp0s31f6
 wireless = wlp3s0
 
+
+; General settings
 [settings]
 screenchange-reload = true
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 0
 margin-bottom = 0
 
+
+; Bar configurations
 [bar/common]
 monitor-strict = true
 
 enable-ipc = true
 
 width = 100%
-height = 24
+height = 36
 
 separator = 
 
@@ -57,8 +56,13 @@ foreground = ${colors.foreground}
 overline-size = 2
 underline-size = 2
 
-border-left-size = 5
-border-right-size = 5
+border-color = #00ffffff
+
+border-left-size = 20
+border-right-size = 20
+
+border-top-size = 0
+border-bottom-size = 0
 
 padding-left = 1
 padding-right = 1
@@ -74,7 +78,7 @@ inherit = bar/common
 
 monitor = ${env:MONITOR:DP2-2}
 
-border-top-size = 5
+border-top-size = 20
 
 modules-left = i3 compton redshift xwindow
 modules-center = mpd
@@ -88,7 +92,9 @@ inherit = bar/common
 
 monitor = ${env:MONITOR:eDP1}
 
-border-top-size = 5
+border-top-size = 20
+
+fixed-center = true
 
 modules-left = i3 compton redshift
 modules-center = xwindow
@@ -115,6 +121,8 @@ modules-left = mpd
 modules-center = lan wlan
 modules-right = cpu temp mem fs
 
+
+; Module configurations
 [module/xwindow]
 type = internal/xwindow
 
