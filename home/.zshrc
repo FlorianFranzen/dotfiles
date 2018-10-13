@@ -12,17 +12,20 @@ zplug "plugins/systemd", from:oh-my-zsh
 zplug "plugins/emacs", from:oh-my-zsh
 
 # zsh-user base plugins
-zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
+# On "probation"
+zplug "zsh-users/zaw"
 zplug "chrissicool/zsh-256color"
 zplug "MichaelAquilina/zsh-you-should-use"
 
-# Installed programms plugins
-hash nix-shell 2>/dev/null && zplug "chisui/zsh-nix-shell"
-hash pass 2>/dev/null && zplug "plugins/pass", from:oh-my-zsh
-hash task 2>/dev/null && zplug "plugins/taskwarrior", from:oh-my-zsh
-hash docker 2>/dev/null && zplug "plugins/docker", from:oh-my-zsh
+# Installed programms based plugins
+zplug "chisui/zsh-nix-shell", if:"hash nix-shell"
+zplug "plugins/pass", from:oh-my-zsh, if:"hash pass"
+zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
+zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
 
 # Load custom extensions
 zplug "~/.zshrc.d", from:local, use:"*.zsh"
@@ -30,9 +33,6 @@ zplug "~/.zshrc.d", from:local, use:"*.zsh"
 # Set up theme
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, as:theme
 #zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-
-# Syntax highlighting
-zplug "zsh-users/zsh-syntax-highlighting"
 
 # Finalize
 zplug load
