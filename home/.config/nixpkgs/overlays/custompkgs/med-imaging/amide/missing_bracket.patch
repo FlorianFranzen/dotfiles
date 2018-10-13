@@ -1,0 +1,11 @@
+--- a/src/alignment_mutual_information.c	2018-10-12 15:53:45.142977934 +0200
++++ b/src/alignment_mutual_information.c	2018-10-12 15:54:21.443079971 +0200
+@@ -209,7 +209,7 @@
+       //g_print("\t\%i", mutual_information_array[i][j] );  // for point-wise counts
+       // g_print("\t\%4.3f", incremental_mi );               // for point-wise probability
+       
+-      if isinf(incremental_mi) {
++      if (isinf(incremental_mi)) {
+         //count it (because lots and lots of zeroes mean bad registration) and go to the next loop
+         mi_nan_count++;
+         // this is most often a problem when the incemental MI is infinity, due to divide by zero
