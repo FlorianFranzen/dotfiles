@@ -1,1 +1,2 @@
-export PASSWORD_STORE_DIR=$HOME/Nextcloud/Dictionary
+export PASSWORD_STORE_DIR=$HOME/Cloud/Dictionary
+export PASSWORD_STORE_GENERATED_LENGTH=32
