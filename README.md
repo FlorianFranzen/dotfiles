@@ -7,10 +7,16 @@ To install run:
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/FlorianFranzen/dotfiles/master/install.sh)"
 ```
 
+This install homeshick, zplug, spacemacs, git-subrepo and these dotfiles.
+
+
 ## Dependencies:
 
 - zsh
 - i3-gaps
-- polyline
+- i3lock-color
+- polybar
 - rofi
-- wpgtk
+- compton
+- redshift
+- pywal
