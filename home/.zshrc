@@ -1,10 +1,26 @@
-source ~/.homesick/repos/zplug/init.zsh
+# Check if zplug is installed
+if [[ ! -f "$HOME/.zplug/init.zsh" ]]; then
+  printf "zplug missing. Install? [y/N]: "
+  if read -q; then
+    echo;
+    git clone https://github.com/zplug/zplug "$HOME/.zplug/repos/zplug/zplug"
+    ln -s "$HOME/.zplug/repos/zplug/zplug/init.zsh" "$HOME/.zplug/init.zsh"
+  else
+    return
+  fi
+fi
+
+# Load zplug
+source $HOME/.zplug/init.zsh
+
+# Let zplug manage zplug
+zplug "zplug/zplug"
 
 # Load color scheme
 (cat ~/.cache/wal/sequences &)
 
 # OMZ Base plugins
-zplug "plugins/bgnotify", from:oh-my-zsh
+#zplug "plugins/bgnotify", from:oh-my-zsh
 zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/colored-man-page", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
@@ -15,6 +31,12 @@ zplug "plugins/emacs", from:oh-my-zsh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# User managed command line tools
+export HOMESHICK_DIR="$HOME/.zplug/repos/andsens/homeshick/"
+zplug "andsens/homeshick"
+zplug "ingydotnet/git-subrepo", use:".rc"
+zplug "raylee/tldr", from:github, as:command, use:"tldr"
 
 # On "probation"
 zplug "zsh-users/zaw"
@@ -28,7 +50,7 @@ zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
 zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
 
 # Load custom extensions
-zplug "~/.zshrc.d", from:local, use:"*.zsh"
+zplug "~/.zshrc.d", from:local
 
 # Set up theme
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, as:theme
@@ -39,9 +61,9 @@ zplug load
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
-    printf "Install missing? [y/N]: "
+    printf "Missing zplugin? [y/N]: "
     if read -q; then
-        echo; zplug install
+        echo; zplug install; zplug load
     fi
 fi
 
