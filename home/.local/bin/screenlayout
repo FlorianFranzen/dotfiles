@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# Configuration
+CONFIG_FOLDER="$HOME/.screenlayout"
+CONFIG_FILES=("$CONFIG_FOLDER"/*.sh)
+
+CURRENT_LINK="$CONFIG_FOLDER/.current"
+
+# Abort if no config available
+if [ -z "$CONFIG_FILES" ]; then
+  echo "No configs found in '$CONFIG_FOLDER'."
+  exit 1
+fi
+
+# Find current config
+NEXT_INDEX=0
+if [ -e "$CURRENT_LINK" ]; then
+
+  CURRENT_FILE="$(readlink $CURRENT_LINK)"
+
+  for file in "${CONFIG_FILES[@]}"; do
+    ((NEXT_INDEX++))
+
+    if [ "$file" == "$CURRENT_FILE" ]; then
+      break
+    fi
+  done
+
+fi
+
+# Handle overrun (unknown or last config)
+NEXT_INDEX=$((NEXT_INDEX % ${#CONFIG_FILES[@]}))
+
+# Link new selected config
+ln -sf "${CONFIG_FILES[$NEXT_INDEX]}" "$CURRENT_LINK"
+
+# Check if compton is running
+systemctl is-active --user --quiet compton
+COMPTON_ACTIVE=$?
+
+# Disable compton if running
+if [ $COMPTON_ACTIVE -eq 0 ]; then
+  systemctl stop --user --quiet compton
+fi
+
+# Execute new setting
+$CURRENT_FILE
+
+# Reenable compton if it was disabled
+if [ $COMPTON_ACTIVE -eq 0 ]; then
+  systemctl start --user --quiet compton
+fi

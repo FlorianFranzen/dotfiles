@@ -142,12 +142,15 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPlay exec mpc toggle
 
-# Sreen brightness controls
+# Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # Toggle trackpad
-bindsym XF86Tools exec syntoggle
+bindsym XF86Tools exec $HOME/.local/bin/syntoggle
+
+# Switch screen settings
+bindsym XF86Display exec $HOME/.local/bin/screenlayout
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

@@ -1,2 +1,1 @@
-#!/bin/sh
-xrandr --output eDP-1 --mode 1920x1080 --pos 3840x1080 --output DP-2-1 --primary --mode 3840x2160 --pos 0x0 -r 30 -s 3840x2160 
+xrandr --output eDP1 --mode 2560x1440 --pos 3840x720 --rotate normal --output DP2-2 --primary --mode 3840x2160 --pos 0x0 --rotate normal
