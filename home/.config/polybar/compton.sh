@@ -9,7 +9,7 @@ fi
 icon=""
 
 if systemctl is-active --user --quiet compton; then
-	echo "%{F$color7}$icon"
+  echo "%{F$color7}$icon"
 else
-	echo "%{F$color5}$icon"
+  echo "%{F$color8}$icon"
 fi

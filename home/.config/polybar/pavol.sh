@@ -156,7 +156,7 @@ function output() {
     volMuteStatus
     if [ "${curStatus}" = 'yes' ]
     then
-        echo "%{F$color6} %{F$color5}$curVol%"
+        echo "%{F$color6} %{F$color8}$curVol%"
     else
         echo "%{F$color6} %{F$color7}$curVol%"
     fi

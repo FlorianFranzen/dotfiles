@@ -10,7 +10,7 @@ fi
 icon=""
 
 if systemctl is-active --user --quiet redshift; then
-    echo "%{F$COLOR5}$icon"
+  echo "%{F$color7}$icon"
 else
-    echo "%{F$COLOR7}$icon"
+  echo "%{F$color8}$icon"
 fi
