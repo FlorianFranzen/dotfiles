@@ -17,6 +17,7 @@ NEXT_INDEX=0
 if [ -e "$CURRENT_LINK" ]; then
 
   CURRENT_FILE="$(readlink $CURRENT_LINK)"
+  CURRENT_NAME="$(basename $CURRENT_FILE)"
 
   for file in "${CONFIG_FILES[@]}"; do
     ((NEXT_INDEX++))
@@ -38,13 +39,19 @@ ln -sf "${CONFIG_FILES[$NEXT_INDEX]}" "$CURRENT_LINK"
 systemctl is-active --user --quiet compton
 COMPTON_ACTIVE=$?
 
+# Notify user of profile being execured
+notify-send 'Screen Layout' "$CURRENT_NAME" --icon=../devices/monitor
+
 # Disable compton if running
 if [ $COMPTON_ACTIVE -eq 0 ]; then
   systemctl stop --user --quiet compton
 fi
 
 # Execute new setting
-$CURRENT_FILE
+$CURRENT_FILE 
+
+# Relaunch polybar
+$HOME/.config/polybar/launch.sh
 
 # Reenable compton if it was disabled
 if [ $COMPTON_ACTIVE -eq 0 ]; then

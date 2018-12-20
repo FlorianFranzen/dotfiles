@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-xrandr --auto
+xrandr --output VIRTUAL1 --off --auto
