@@ -30,9 +30,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 set $mod Mod4
 set $alt Mod1
 
-# Font for window titles. 
-#font pango:monospace 8
-#font pango:DejaVu Sans Mono 8
+# Font for window titles.
+font pango:InputSansNarrow Nerd Font 11 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -40,6 +39,7 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec termite
 bindsym $mod+BackSpace exec firefox
+bindsym $mod+Shift+BackSpace exec firefox --private-window
 bindsym $mod+Delete exec thunar
 
 # kill focused window
@@ -176,8 +176,9 @@ bindsym $mod+r mode "resize"
 # Desktop ten is our floating desktop
 for_window [workspace=10] floating enable
 
-# Set up small borders
-for_window [class="^.*"] border pixel 2
+# Set up border around windows
+default_border pixel 2
+default_floating_border pixel 2
 
 # Mouse settings
 focus_follows_mouse no

@@ -272,7 +272,7 @@ format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.foreground-alt}
 
 label-disconnected = -.-.-.-
-label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.quaternary}
 
 [module/lan]
 type = internal/network
@@ -287,8 +287,8 @@ label-connected = %local_ip% (%linkspeed%)
 format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.foreground-alt}
 
-label-disconnected =  -.-.-.-
-label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected = -.-.-.-
+label-disconnected-foreground = ${colors.quaternary}
 
 [module/bat0]
 type = internal/battery
@@ -344,7 +344,7 @@ format-warn = <ramp> <label-warn>
 format-warn-underline = ${colors.alert}
 
 label = %temperature-c%
-label-warn = %temperature%!
+label-warn = %temperature-c%!
 label-warn-foreground = ${colors.alert}
 
 ramp-0 = 
