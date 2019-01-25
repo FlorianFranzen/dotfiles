@@ -37,27 +37,38 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     auto-completion
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     spell-checking
-     syntax-checking
-     ;;version-control
-     ;; Language layes
+     (auto-completion :variables
+                      auto-completion-use-tab-instead-of-enter t
+                      auto-completion-enable-sort-by-usage t)
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-default-height 25
+            shell-default-position 'bottom)
+     ;;spell-checking
+     ;;syntax-checking
+     semantic
+     ibuffer
+     ;; Language layers
      c-c++
      python
+     shell-scripts
      octave
      rust
      extra-langs
-     ;;ipython-notebook
+     ;; Markup layes
      markdown
      yaml
      html
      org
      emacs-lisp
+     latex
+     bibtex
+     ;; OS
+     nixos
+     systemd
      ;; Tools
-     git
+     (git :variables
+          git-gutter-use-fringe t)
      pandoc
      themes-megapack
      spotify
@@ -66,7 +77,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(all-the-icons xresources-theme)
+   dotspacemacs-additional-packages '(all-the-icons editorconfig xresources-theme)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -130,7 +141,8 @@ values."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
    dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+                                (projects . 7)
+                                (todos . 5))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -138,7 +150,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark  xresources)
+   dotspacemacs-themes '(sanityinc-solarized-dark  xresources)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -147,7 +159,7 @@ values."
                                :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.25)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -254,7 +266,7 @@ values."
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
    dotspacemacs-mode-line-unicode-symbols t
    ;; Set mode line theme
-   dotspacemacs-mode-line-theme '(all-the-icons :separator 'slant)
+   dotspacemacs-mode-line-theme '(all-the-icons :separator slant)
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
    ;; when it reaches the top or bottom of the screen. (default t)
@@ -312,8 +324,21 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq user-full-name "Florian Franzen"
+        user-mail-address "Florian.Franzen@gmail.com")
+  (prefer-coding-system 'utf-8)
+
   (setq python-shell-interpreter "/usr/bin/env python3")
+
   (setq neo-theme 'icons)
+  (setq powerline-default-separator 'slant)
+
+  (setq exec-path-from-shell-check-startup-files nil)
+
+  (with-eval-after-load 'org
+    (setq org-default-notes-file "~/Org/Inbox.org")
+    (setq org-agenda-files '("~/Org/"))
+  )
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
