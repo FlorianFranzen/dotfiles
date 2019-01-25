@@ -30,6 +30,12 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 set $mod Mod4
 set $alt Mod1
 
+# Direction keys
+set $up    k
+set $down  j
+set $left  h
+set $right l
+
 # Font for window titles.
 font pango:InputSansNarrow Nerd Font 11 
 
@@ -47,27 +53,25 @@ bindsym $mod+Shift+q kill
 
 # start rofi
 bindsym $mod+space exec rofi -show run
-bindsym $mod+d exec rofi -show drun
+bindsym $mod+d     exec rofi -show drun
 
 # start clerk
 bindsym $mod+m exec clerk
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
 
 # move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
+# split in horizontal and vertical orientation
+bindsym $mod+n split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -114,9 +118,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# reload the configuration file
+# reload and restart (to update configuration)
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
 # restart polybar
@@ -126,7 +129,7 @@ bindsym $mod+Shift+p exec polybar-msg cmd restart
 bindsym $mod+Shift+e exec $HOME/.config/i3/exit.sh
 
 # Lock screen
-bindsym $mod+Shift+l exec $HOME/.config/i3/lock.sh
+bindsym $mod+Shift+o exec $HOME/.config/i3/lock.sh
 
 # Retheme desktop
 bindsym $mod+Shift+t exec wal -i ~/.wallpapers
@@ -160,10 +163,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym $left  resize shrink width  10 px or 10 ppt
+        bindsym $down  resize grow   height 10 px or 10 ppt
+        bindsym $up    resize shrink height 10 px or 10 ppt
+        bindsym $right resize grow   width  10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
