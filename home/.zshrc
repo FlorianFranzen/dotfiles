@@ -34,7 +34,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # User managed command line tools
 export HOMESHICK_DIR="$HOME/.zplug/repos/andsens/homeshick/"
-zplug "andsens/homeshick"
+fpath=("${HOMESHICK_DIR}/completions" $fpath)
+zplug "andsens/homeshick", use:"homeshick.sh"
 zplug "ingydotnet/git-subrepo", use:".rc"
 zplug "raylee/tldr", from:github, as:command, use:"tldr"
 
