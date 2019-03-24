@@ -1,19 +1,9 @@
-# Generate or load color sheme and background
+# COLOR SCHEME
+
 exec --no-startup-id wal -R
 
-# Set colors from Xresources
-set_from_resource $color0 i3wm.color0 #000000
-set_from_resource $color1 i3wm.color1 #020202
-set_from_resource $color2 i3wm.color2 #040404
-set_from_resource $color3 i3wm.color3 #080808
-set_from_resource $color4 i3wm.color4 #101010
-set_from_resource $color5 i3wm.color5 #202020
-set_from_resource $color6 i3wm.color6 #404040
-set_from_resource $color7 i3wm.color7 #ffffff
-set_from_resource $color8 i3wm.color8 #808080
+include ~/.cache/wal/colors-sway
 
-
-# Set up color scheme
 # class                 border  backgr. text    indic.   child_border
 client.focused          $color5 $color0 $color7 $color6  $color4
 client.focused_inactive $color4 $color0 $color7 $color6  $color3
@@ -23,8 +13,54 @@ client.placeholder      $color2 $color0 $color7 $color6  $color1
 
 client.background       $color0
 
-# Start polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# GTK THEME SETTINGS
+
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'NumixSolarizedDarkGreen'
+    gsettings set $gnome-schema cursor-theme 'Numix-Cursor'
+    gsettings set $gnome-schema icon-theme 'elementary Xfce'
+    gsettings set $gnome-schema font-name 'InputSansNarrow 11'
+    gsettings set $gnome-schema document-font-name 'InputSansNarrow 11'
+    gsettings set $gnome-schema monospace-font-name 'InputMonoNarrow 11'
+}
+
+# INPUT SETTINGS
+
+input 1:1:AT_Translated_Set_2_keyboard {
+  xkb_layout "us"
+  xkb_options "compose:ralt, terminate:ctrl_alt_bksp"
+}
+
+# OUTPUT SETTINGS
+
+output eDP-1 {
+  background ~/.background fill
+  resolution 2560x1440
+}
+
+output DP-4 {
+  background ~/.background fill
+  resolution 3840x2160
+}
+
+output DP-5 {
+  background ~/.background fill
+  resolution 1680x1050
+  position 1680 0
+}
+
+# SWITCH SETTINGS
+
+#bindswitch --locked lid:off output eDP1 disable
+#bindswitch --locked lid:on output eDP1 enable
+
+# Set up bar
+#bar {
+#    swaybar_command waybar
+#}
+
 
 # Super is our modifier key
 set $mod Mod4
@@ -52,8 +88,8 @@ bindsym $mod+Delete exec thunar
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+space exec rofi -show run
-bindsym $mod+d     exec rofi -show drun
+bindsym $mod+space exec rofi -show drun
+bindsym $mod+d     exec rofi -show run
 
 # start clerk
 bindsym $mod+m exec clerk
@@ -69,6 +105,12 @@ bindsym $mod+Shift+$left  move left
 bindsym $mod+Shift+$down  move down
 bindsym $mod+Shift+$up    move up
 bindsym $mod+Shift+$right move right
+
+# move current workspace
+bindsym $alt+Shift+$left  move workspace output left
+bindsym $alt+Shift+$down  move workspace output down
+bindsym $alt+Shift+$up    move workspace output up
+bindsym $alt+Shift+$right move workspace output right
 
 # split in horizontal and vertical orientation
 bindsym $mod+n split h
@@ -92,19 +134,19 @@ bindsym $alt+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+Shift+a focus child
+#bindsym $mod+d focus child
 
-# Switch to workspace like xmonad
-bindsym $mod+1 [workspace=1]  move workspace to output current; workspace 1
-bindsym $mod+2 [workspace=2]  move workspace to output current; workspace 2
-bindsym $mod+3 [workspace=3]  move workspace to output current; workspace 3
-bindsym $mod+4 [workspace=4]  move workspace to output current; workspace 4
-bindsym $mod+5 [workspace=5]  move workspace to output current; workspace 5
-bindsym $mod+6 [workspace=6]  move workspace to output current; workspace 6
-bindsym $mod+7 [workspace=7]  move workspace to output current; workspace 7
-bindsym $mod+8 [workspace=8]  move workspace to output current; workspace 8
-bindsym $mod+9 [workspace=9]  move workspace to output current; workspace 9
-bindsym $mod+0 [workspace=10] move workspace to output current; workspace 10
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -126,10 +168,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+p exec polybar-msg cmd restart
 
 # Logout and shutdown
-bindsym $mod+Shift+e exec $HOME/.config/i3/exit.sh
+bindsym $mod+Shift+e exit
 
 # Lock screen
-bindsym $mod+Shift+o exec $HOME/.config/i3/lock.sh
+bindsym $mod+Shift+o exec $HOME/.config/sway/lock.sh
 
 # Retheme desktop
 bindsym $mod+Shift+t exec wal -i ~/.wallpapers
@@ -146,15 +188,11 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPlay exec mpc toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -D 10
 
 # Toggle trackpad
 bindsym XF86Tools exec $HOME/.local/bin/syntoggle
-
-# Switch screen settings
-bindsym XF86Display exec $HOME/.local/bin/screenlayout
-bindsym $mod+Shift+s exec $HOME/.local/bin/screenlayout
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -190,5 +228,11 @@ focus_follows_mouse no
 gaps inner 20
 gaps outer 0 
 
+# Set up waybar
+exec systemctl --user import-environment SWAYSOCK
+exec systemctl --user restart waybar
+
 # Last but not least, run startup scripts
-exec $HOME/.config/startr/host.sh
+#exec $HOME/.config/startr/host.sh
+
+exec nm-applet

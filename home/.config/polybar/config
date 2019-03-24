@@ -1,14 +1,15 @@
 ; Color variables
 [colors]
-color0=${xrdb:color0:#000000}
-color1=${xrdb:color1:#020202}
-color2=${xrdb:color2:#040404}
-color3=${xrdb:color3:#080808}
-color4=${xrdb:color4:#101010}
-color5=${xrdb:color5:#202020}
-color6=${xrdb:color6:#400040}
-color7=${xrdb:color7:#FFFFFF}
-color8=${xrdb:color8:#808080}
+color0  = ${xrdb:color0:#000000}
+color1  = ${xrdb:color1:#020202}
+color2  = ${xrdb:color2:#040404}
+color3  = ${xrdb:color3:#080808}
+color4  = ${xrdb:color4:#101010}
+color5  = ${xrdb:color5:#202020}
+color6  = ${xrdb:color6:#400040}
+color7  = ${xrdb:color7:#BBBBBB}
+color8  = ${xrdb:color8:#808080}
+color15 = ${xrdb:color15:#FFFFFF}
 
 background     = ${colors.color0}
 background-alt = ${colors.color1}

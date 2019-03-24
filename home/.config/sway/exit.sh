@@ -3,7 +3,7 @@
 OPTIONS="Exit window manager\nReboot system\nShutdown system\nSuspend system\nHibernate system"
 
 LAUNCHER="rofi -color-enabled -dmenu -i -p power"
-LOCKER="$HOME/.config/i3/lock.sh"
+LOCKER="$HOME/.config/sway/lock.sh"
 
 SELECTION=$(echo -e $OPTIONS | $LAUNCHER | cut -f1 -d" " | tr -d '\r\n')
 if [ ${#SELECTION} -gt 0 ]

@@ -1,3 +1,6 @@
+!!! Fix XWayland bug
+Xft.dpi: 96
+
 !!! URxvt !!!
 
 ! General
@@ -22,20 +25,7 @@ URxvt.perl-ext-common: default,matcher,searchable-scrollback,selection-to-clipbo
 
 URxvt.urlLauncher:     /usr/bin/firefox
 URxvt.matcher.button:  1
- 
-! catch ugly URLs
-!urxvt.cutchars:        `()''*<>[]{|}\
 
 ! pseudo transparency
 !urxvt*shading:    50
 !urxvt*transparent:true
-
-!!! rofi !!!
-
-rofi.font: InputSansNarrow Nerd Font 12
-rofi.color-enabled: true
-rofi.modi: window,run,drun,ssh
-rofi.sidebar-mode: true
-rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
-
-!rofi.fake-transparency: true

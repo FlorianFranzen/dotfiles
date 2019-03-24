@@ -47,6 +47,8 @@
     # Allow some HTML tags like <i> and <u> in notifications
     markup = full
 
+    dmenu = rofi --dmenu
+
 # These are the keybindings used to control dunst notifications
 [shortcuts]
     close = ctrl+space

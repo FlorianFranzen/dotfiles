@@ -1,0 +1,50 @@
+{
+    "layer": "top",
+    "modules-left":   [ "sway/workspaces", "sway/mode" ],
+    "modules-center": [ "sway/window" ],
+    "modules-right":  [ "pulseaudio", "network", "cpu", "memory", "battery", "battery#bat1", "clock", "tray" ],
+    "sway/workspaces": {
+        "all-outputs": false
+    },
+    "sway/window": {
+        "max-length": 50
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat1": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "bat": "BAT1"
+    },
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ Disconnected"
+    },
+    "clock": {
+        "format": "{:%a, %d. %b  %H:%M}"
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": " {volume}% {icon}",
+        "format-muted": " {volume}%",
+        "format-icons": {
+            "headphones": "",
+            "bluetooth": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}
