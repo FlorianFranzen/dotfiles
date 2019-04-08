@@ -36,19 +36,15 @@ input 1:1:AT_Translated_Set_2_keyboard {
 # OUTPUT SETTINGS
 
 output eDP-1 {
-  background ~/.background fill
+  background $wallpaper fill
   resolution 2560x1440
+  position 3840 720
 }
 
 output DP-4 {
-  background ~/.background fill
+  background $wallpaper fill
   resolution 3840x2160
-}
-
-output DP-5 {
-  background ~/.background fill
-  resolution 1680x1050
-  position 1680 0
+  position 0 0
 }
 
 # SWITCH SETTINGS
@@ -174,7 +170,7 @@ bindsym $mod+Shift+e exit
 bindsym $mod+Shift+o exec $HOME/.config/sway/lock.sh
 
 # Retheme desktop
-bindsym $mod+Shift+t exec wal -i ~/.wallpapers
+bindsym $mod+Shift+t exec wal --iterative -i ~/.wallpapers -o ~/.config/sway/postwal.sh
 
 # Volume control
 bindsym XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
@@ -189,7 +185,7 @@ bindsym XF86AudioPlay exec mpc toggle
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -D 10
+bindsym XF86MonBrightnessDown exec light -U 10
 
 # Toggle trackpad
 bindsym XF86Tools exec $HOME/.local/bin/syntoggle

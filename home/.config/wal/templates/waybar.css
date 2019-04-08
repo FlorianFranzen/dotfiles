@@ -1,0 +1,104 @@
+* {{
+    border: none;
+    border-radius: 0;
+    font-family: "InputSansNarrow Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 2em;
+    color: {foreground};
+}}
+
+window#waybar {{
+    background: {background};
+    border-bottom: 2px solid;
+    border-color: {cursor}
+}}
+
+#workspaces button {{
+    padding: 0 10px;
+    background: transparent;
+    border-bottom: 3px solid transparent;
+}}
+
+#workspaces button.visible {{
+    background: {color5};
+}}
+
+#workspaces button.focused {{
+    background: {cursor};
+    border-bottom: 3px solid white;
+}}
+
+#workspace button.urgent {{
+    background: {color6};
+    border-bottom: 3px solid white;
+}}
+
+#mode {{
+    background: {cursor};
+    border-bottom: 3px solid white;
+}}
+
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode {{
+    padding: 0 10px;
+    margin: 0 5px;
+}}
+
+#clock {{
+    background-color: {color5};
+}}
+
+#battery {{
+    background-color: {color4};
+}}
+
+#battery.charging {{
+    background-color: {color6};
+}}
+
+@keyframes blink {{
+    to {{
+        background-color: {foreground};
+        color: {background};
+    }}
+}}
+
+#battery.warning:not(.charging) {{
+    background: {cursor};
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}}
+
+#cpu {{
+    background: {color3};
+}}
+
+#memory {{
+    background: {color3};
+}}
+
+#network {{
+    background: {color2};
+}}
+
+#network.disconnected {{
+    background: {background};
+}}
+
+#pulseaudio {{
+    background: {color1};
+}}
+
+#pulseaudio.bluetooth {{
+    background: {color6};
+}}
+
+#pulseaudio.muted {{
+    background: {background};
+}}
+
+#tray {{
+}}
