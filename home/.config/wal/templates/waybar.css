@@ -10,33 +10,49 @@
 
 window#waybar {{
     background: {background};
-    border-bottom: 2px solid;
-    border-color: {cursor}
+    border-top: 2px solid transparent;
+    border-bottom: 2px double {color8};
 }}
 
 #workspaces button {{
     padding: 0 10px;
     background: transparent;
-    border-bottom: 3px solid transparent;
+    border-bottom: 2px solid transparent;
+}}
+
+#workspaces button:hover {{
+    /* Disable weird GTK CSS */
+    box-shadow: inherit;
+    text-shadow: inherit;
+    padding: 0 10px;
+
+    background: {color5};
+    border-top: 2px solid {foreground};
+    border-bottom: 2px solid {foreground};
 }}
 
 #workspaces button.visible {{
-    background: {color5};
+    background: {color2};
+    border-top: 2px solid {foreground};
+    border-bottom: 2px solid {foreground};
 }}
 
 #workspaces button.focused {{
-    background: {cursor};
-    border-bottom: 3px solid white;
+    background: {color4};
+    border-top: 2px solid {foreground};
+    border-bottom: 2px solid {foreground};
 }}
 
 #workspace button.urgent {{
-    background: {color6};
-    border-bottom: 3px solid white;
+    background: {cursor};
+    border-top: 2px solid {foreground};
+    border-bottom: 2px solid {foreground};
 }}
 
 #mode {{
     background: {cursor};
-    border-bottom: 3px solid white;
+    border-top: 2px solid {foreground};
+    border-bottom: 2px solid {foreground};
 }}
 
 #clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode {{
@@ -98,6 +114,7 @@ window#waybar {{
 
 #pulseaudio.muted {{
     background: {background};
+    border-bottom: 2px solid {color1};
 }}
 
 #tray {{
