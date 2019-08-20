@@ -17,7 +17,7 @@ source $HOME/.zplug/init.zsh
 zplug "zplug/zplug"
 
 # Load color scheme
-(cat ~/.cache/wal/sequences &)
+[[ -f ~/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &)
 
 # OMZ Base plugins
 #zplug "plugins/bgnotify", from:oh-my-zsh
@@ -51,11 +51,10 @@ zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
 zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
 
 # Set up theme
-#zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, as:theme
 zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme
 
 # Load custom extensions
-zplug "~/.zshrc.d", from:local #, use:"*.zsh"
+zplug "~/.zshrc.d", from:local
 
 # Finalize
 zplug load
