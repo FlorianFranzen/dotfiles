@@ -46,11 +46,31 @@ output * {
 #bindswitch --locked lid:off output eDP1 disable
 #bindswitch --locked lid:on output eDP1 enable
 
-# Set up bar
-#bar {
-#    swaybar_command waybar
-#}
+# BAR SETTINGS
 
+bar {
+  position top
+  gaps 10 10 0 10
+
+  font $font
+  icon_theme $icons
+
+  colors {
+    background $color0
+    statusline $color7
+    separator  $color2
+
+    focused_workspace  $color7 $color5 $color7
+    active_workspace   $color7 $color4 $color7
+    inactive_workspace $color0 $color3 $color7
+    urgent_workspace   $color7 $color8 $color7
+    binding_mode       $color0 $color7 $color8
+  }
+
+  status_command i3status-rs ~/.config/sway/status.toml
+}
+
+# KEY BINDINGS
 
 # Super is our modifier key
 set $mod Mod4
@@ -217,8 +237,8 @@ gaps inner 10
 gaps outer 0 
 
 # Set up waybar
-exec systemctl --user import-environment SWAYSOCK
-exec systemctl --user restart waybar
+#exec systemctl --user import-environment SWAYSOCK
+#exec systemctl --user restart waybar
 
 # Last but not least, run startup scripts
 #exec $HOME/.config/startr/host.sh
