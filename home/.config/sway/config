@@ -5,13 +5,15 @@ exec --no-startup-id wal -R
 include ~/.cache/wal/colors-sway
 
 # class                 border  backgr. text    indic.   child_border
-client.focused          $color5 $color0 $color7 $color6  $color4
-client.focused_inactive $color4 $color0 $color7 $color6  $color3
-client.unfocused        $color3 $color0 $color7 $color6  $color2
-client.urgent           $color8 $color0 $color7 $color8  $color6
-client.placeholder      $color2 $color0 $color7 $color6  $color1
+client.focused          $color5 $color0 $color7 $color6  $color5
+client.focused_inactive $color4 $color0 $color7 $color6  $color4
+client.unfocused        $color3 $color0 $color7 $color6  $color3
+client.urgent           $color8 $color0 $color7 $color6  $color8
 
-client.background       $color0
+# FONT SETTINGS
+
+set $font  'Anonymice Nerd Font 11'
+set $icons 'elementary Xfce'
 
 # GTK THEME SETTINGS
 
@@ -20,31 +22,23 @@ set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'NumixSolarizedDarkGreen'
     gsettings set $gnome-schema cursor-theme 'Numix-Cursor'
-    gsettings set $gnome-schema icon-theme 'elementary Xfce'
-    gsettings set $gnome-schema font-name 'InputSansNarrow 11'
-    gsettings set $gnome-schema document-font-name 'InputSansNarrow 11'
-    gsettings set $gnome-schema monospace-font-name 'InputMonoNarrow 11'
+    gsettings set $gnome-schema icon-theme $icons
+    gsettings set $gnome-schema font-name $font
+    gsettings set $gnome-schema document-font-name $font
+    gsettings set $gnome-schema monospace-font-name $font
 }
 
 # INPUT SETTINGS
 
-input 1:1:AT_Translated_Set_2_keyboard {
+input * {
   xkb_layout "us"
   xkb_options "compose:ralt, terminate:ctrl_alt_bksp"
 }
 
 # OUTPUT SETTINGS
 
-output eDP-1 {
+output * {
   background $wallpaper fill
-  resolution 2560x1440
-  position 3840 720
-}
-
-output DP-4 {
-  background $wallpaper fill
-  resolution 3840x2160
-  position 0 0
 }
 
 # SWITCH SETTINGS
@@ -69,7 +63,7 @@ set $left  h
 set $right l
 
 # Font for window titles.
-font pango:InputSansNarrow Nerd Font 11 
+font pango:$font
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -86,9 +80,6 @@ bindsym $mod+Shift+q kill
 # start rofi
 bindsym $mod+space exec rofi -show drun
 bindsym $mod+d     exec rofi -show run
-
-# start clerk
-bindsym $mod+m exec clerk
 
 # change focus
 bindsym $mod+$left  focus left
@@ -160,9 +151,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
-# restart polybar
-bindsym $mod+Shift+p exec polybar-msg cmd restart
-
 # Logout and shutdown
 bindsym $mod+Shift+e exit
 
@@ -186,6 +174,10 @@ bindsym XF86AudioPlay exec mpc toggle
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
+
+# Keyboard brightness controls
+bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 10
+bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 10
 
 # Toggle trackpad
 bindsym XF86Tools exec $HOME/.local/bin/syntoggle
@@ -214,14 +206,14 @@ bindsym $mod+r mode "resize"
 for_window [workspace=10] floating enable
 
 # Set up border around windows
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
 # Mouse settings
 focus_follows_mouse no
 
 # Set up gaps
-gaps inner 20
+gaps inner 10
 gaps outer 0 
 
 # Set up waybar
