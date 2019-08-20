@@ -50,12 +50,12 @@ zplug "plugins/pass", from:oh-my-zsh, if:"hash pass"
 zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
 zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
 
-# Load custom extensions
-zplug "~/.zshrc.d", from:local
-
 # Set up theme
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, as:theme
-#zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+#zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, as:theme
+zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme
+
+# Load custom extensions
+zplug "~/.zshrc.d", from:local #, use:"*.zsh"
 
 # Finalize
 zplug load
