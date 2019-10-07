@@ -10,7 +10,9 @@ client.focused_inactive $color4 $color0 $color7 $color6  $color4
 client.unfocused        $color3 $color0 $color7 $color6  $color3
 client.urgent           $color8 $color0 $color7 $color6  $color8
 
-# FONT SETTINGS
+# GENERAL THEME SETTINGS
+
+set $gap 10
 
 set $font  'Anonymice Nerd Font 11'
 set $icons 'elementary Xfce'
@@ -41,16 +43,27 @@ output * {
   background $wallpaper fill
 }
 
-# SWITCH SETTINGS
+# GENERAL APPERANCE
 
-#bindswitch --locked lid:off output eDP1 disable
-#bindswitch --locked lid:on output eDP1 enable
+# Set up border around windows
+default_border pixel 1
+default_floating_border pixel 1
+
+# Mouse settings
+focus_follows_mouse no
+
+# Set up gaps
+gaps inner $gap
+gaps outer 0 
+
+# Desktop ten is our floating desktop
+for_window [workspace=10] floating enable
 
 # BAR SETTINGS
 
 bar {
   position top
-  gaps 10 10 0 10
+  gaps $gap $gap 0 $gap
 
   font $font
   icon_theme $icons
@@ -69,6 +82,15 @@ bar {
 
   status_command i3status-rs ~/.config/sway/status.toml
 }
+
+# Set up waybar
+#exec systemctl --user import-environment SWAYSOCK
+#exec systemctl --user restart waybar
+
+# SWITCH SETTINGS
+
+#bindswitch --locked lid:off output eDP1 disable
+#bindswitch --locked lid:on output eDP1 enable
 
 # KEY BINDINGS
 
@@ -221,24 +243,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# Desktop ten is our floating desktop
-for_window [workspace=10] floating enable
-
-# Set up border around windows
-default_border pixel 1
-default_floating_border pixel 1
-
-# Mouse settings
-focus_follows_mouse no
-
-# Set up gaps
-gaps inner 10
-gaps outer 0 
-
-# Set up waybar
-#exec systemctl --user import-environment SWAYSOCK
-#exec systemctl --user restart waybar
 
 # Last but not least, run startup scripts
 #exec $HOME/.config/startr/host.sh
