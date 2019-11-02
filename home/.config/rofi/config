@@ -1,0 +1,7 @@
+rofi.font: Anonymice Nerd Font 12
+rofi.color-enabled: true
+rofi.modi: window,run,drun,ssh
+rofi.sidebar-mode: true
+rofi.show-icons: true
+rofi.theme: ~/.cache/wal/colors-rofi.rasi
+rofi.fake-transparency: true
