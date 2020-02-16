@@ -1,0 +1,39 @@
+[general]
+accounts = Personal, Gmail
+
+[DEFAULT]
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+
+[Account Personal]
+localrepository = PersonalLocal
+remoterepository = PersonalRemote
+
+[Repository PersonalLocal]
+type = Maildir
+localfolders = ~/Mail/Personal
+
+[Repository PersonalRemote]
+type = IMAP
+remotehost = imap.denkmuskel.org
+remoteuser = florian
+remotepassfile = ~/.config/offlineimap/denkmuskel.pass
+
+
+[Account Gmail]
+localrepository = GmailLocal
+remoterepository = GmailRemote
+synclabels = yes
+
+[Repository GmailLocal]
+type = GmailMaildir
+localfolders = ~/Mail/Gmail
+nametrans = lambda f: '[Google Mail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Trash', 'All Mail', 'Sent Mail'] else f
+
+[Repository GmailRemote]
+type = Gmail
+remoteuser = florian.franzen@gmail.com
+remotepassfile = ~/.config/offlineimap/gmail.pass
+ssl_version = tls1_2
+nametrans = lambda f: f.replace('[Google Mail]/', '') if f.startswith('[Google Mail]/') else f
+

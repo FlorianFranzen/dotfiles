@@ -30,6 +30,7 @@ zplug "plugins/emacs", from:oh-my-zsh
 # zsh-user base plugins
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
+#zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # User managed command line tools
@@ -40,12 +41,12 @@ zplug "ingydotnet/git-subrepo", use:".rc"
 zplug "raylee/tldr", from:github, as:command, use:"tldr"
 
 # On "probation"
-zplug "zsh-users/zaw"
-zplug "chrissicool/zsh-256color"
+#zplug "zsh-users/zaw"
+#zplug "chrissicool/zsh-256color"
 zplug "MichaelAquilina/zsh-you-should-use"
 
 # Installed programms based plugins
-zplug "chisui/zsh-nix-shell", if:"hash nix-shell"
+#zplug "chisui/zsh-nix-shell", if:"hash nix-shell"
 zplug "plugins/pass", from:oh-my-zsh, if:"hash pass"
 zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
 zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
@@ -61,7 +62,7 @@ zplug load
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
-    printf "Missing zplugin? [y/N]: "
+    printf "Install missing zsh plugin? [y/N]: "
     if read -q; then
         echo; zplug install; zplug load
     fi
