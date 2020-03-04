@@ -2,15 +2,32 @@
   allowUnfree = true;
 
   config = {
-    # Preffered wine config
+    # Preferred wine config
     wine = {
       release = "staging";
       build = "wineWow";
     };
   };
 
+  packageOverrides = pkgs:
+  let
+    wrapXWayland = drv: pkgs.symlinkJoin { 
+      inherit (drv) name version meta;
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      paths = [ drv ];
 
-  packageOverrides = pkgs: {
+      postBuild = ''
+        for bin in $out/bin/*; do
+          echo "- wrapping $bin..."
+          wrapProgram "$bin" --set GDK_BACKEND x11
+        done
+      '';
+    };
+  in {
+    # List of application not wayland compatible
+    riot-desktop = wrapXWayland pkgs.riot-desktop;
+
+    # Full featured version of opencv3
     opencv3_enterprise = pkgs.opencv3.override {
       enableUnfree = true;
       enablePython = true;
