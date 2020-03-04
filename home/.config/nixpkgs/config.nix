@@ -1,8 +1,16 @@
 {
   allowUnfree = true;
 
-  packageOverrides = pkgs: {
+  config = {
+    # Preffered wine config
+    wine = {
+      release = "staging";
+      build = "wineWow";
+    };
+  };
 
+
+  packageOverrides = pkgs: {
     opencv3 = pkgs.opencv3.override {
       enableUnfree = true;
       enablePython = true;
@@ -16,9 +24,6 @@
       enableOvis = true;
       enableDocs = true;
     };
-
-    # Use multiarch staging by default
-    wine = pkgs.wineWowPackages.staging;
 
     # Jupyer Python 3 Compute Enviroment
     jupyterEnv = pkgs.python3.withPackages (
