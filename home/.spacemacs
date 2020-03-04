@@ -70,10 +70,12 @@ values."
      (git :variables
           git-gutter-use-fringe t)
      cmake
-     ;;treemacs
+     (treemacs :variables
+               treemacs-use-git-mode 'simple
+               treemacs-resize-icons 18)
      pandoc
      themes-megapack
-     spotify
+     ;;spotify
      (mu4e :variables
            mu4e-installation-path "/run/current-system/sw/share/emacs/site-lisp/mu4e"
            mu4e-enable-notifications t
@@ -83,7 +85,13 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(all-the-icons editorconfig xresources-theme)
+   dotspacemacs-additional-packages '(
+                                      all-the-icons
+                                      direnv
+                                      editorconfig
+                                      treemacs-icons-dired
+                                      xresources-theme
+                                      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -119,7 +127,7 @@ values."
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
    ;; latest version of packages from MELPA. (default nil)
-   dotspacemacs-use-spacelpa t
+   dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
    ;; (default t)
