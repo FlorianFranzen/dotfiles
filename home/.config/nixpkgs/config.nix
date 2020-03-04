@@ -11,7 +11,7 @@
 
 
   packageOverrides = pkgs: {
-    opencv3 = pkgs.opencv3.override {
+    opencv3_enterprise = pkgs.opencv3.override {
       enableUnfree = true;
       enablePython = true;
       pythonPackages = pkgs.python3Packages; 
