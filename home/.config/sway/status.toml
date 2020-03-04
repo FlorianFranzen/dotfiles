@@ -9,14 +9,13 @@ separator = ""
 block = "sound"
 
 [[block]]
-block = "memory"
-display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
-
-[[block]]
 block = "cpu"
 interval = 5
+
+[[block]]
+block = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
 
 [[block]]
 block = "disk_space"
