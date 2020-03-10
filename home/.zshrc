@@ -1,3 +1,6 @@
+# Load color scheme
+[[ -f ~/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &)
+
 # Check if zplug is installed
 if [[ ! -f "$HOME/.zplug/init.zsh" ]]; then
   printf "zplug missing. Install? [y/N]: "
@@ -10,14 +13,16 @@ if [[ ! -f "$HOME/.zplug/init.zsh" ]]; then
   fi
 fi
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Load zplug
 source $HOME/.zplug/init.zsh
 
 # Let zplug manage zplug
 zplug "zplug/zplug"
-
-# Load color scheme
-[[ -f ~/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &)
 
 # OMZ Base plugins
 #zplug "plugins/bgnotify", from:oh-my-zsh
