@@ -111,7 +111,7 @@ font pango:$font
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 bindsym $mod+BackSpace exec firefox
 bindsym $mod+Shift+BackSpace exec firefox --private-window
 bindsym $mod+Delete exec thunar
