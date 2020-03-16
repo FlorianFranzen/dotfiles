@@ -225,6 +225,10 @@ bindsym XF86MonBrightnessDown exec light -U 10
 bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 10
 bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 10
 
+# Change opacity
+bindsym $mod+Equal opacity plus  0.05
+bindsym $mod+Minus opacity minus 0.05
+
 # Toggle trackpad
 bindsym XF86Tools exec $HOME/.local/bin/syntoggle
 
@@ -248,7 +252,15 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# WINDOWS SETTINGS
+
+# Float Zoom windows
+for_window [title="Zoom.*"] floating enable
+
+# Float Firefox P-in-P
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
+
+# STARTUP
+
 # Last but not least, run startup scripts
 #exec $HOME/.config/startr/host.sh
-
-exec nm-applet
