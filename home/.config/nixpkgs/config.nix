@@ -19,13 +19,16 @@
       postBuild = ''
         for bin in $out/bin/*; do
           echo "- wrapping $bin..."
-          wrapProgram "$bin" --set GDK_BACKEND x11
+          wrapProgram "$bin" \
+            --set GDK_BACKEND x11 \
+            --set SDL_VIDEODRIVER x
         done
       '';
     };
   in {
     # List of application not wayland compatible
     riot-desktop = wrapXWayland pkgs.riot-desktop;
+    warzone2100 = wrapXWayland (pkgs.warzone2100.override { withVideos = true; });
 
     # Full featured version of opencv3
     opencv3_enterprise = pkgs.opencv3.override {
