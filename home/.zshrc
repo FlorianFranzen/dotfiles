@@ -53,14 +53,14 @@ zplug "MichaelAquilina/zsh-you-should-use"
 # Installed programms based plugins
 #zplug "chisui/zsh-nix-shell", if:"hash nix-shell"
 zplug "plugins/pass", from:oh-my-zsh, if:"hash pass"
-zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
+#zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
 zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
 
 # Set up theme
 zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme
 
-# Load custom extensions
-zplug "~/.zshrc.d", from:local
+# Load custom extensions (last to load = able to overwrite anything)
+zplug "~/.zshrc.d", from:local, defer:3
 
 # Finalize
 zplug load
