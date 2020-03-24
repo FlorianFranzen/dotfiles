@@ -1,5 +1,5 @@
 [general]
-accounts = Personal, Gmail
+accounts = Personal, Gmail, W3F
 
 [DEFAULT]
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
@@ -37,3 +37,20 @@ remotepassfile = ~/.config/offlineimap/gmail.pass
 ssl_version = tls1_2
 nametrans = lambda f: f.replace('[Google Mail]/', '') if f.startswith('[Google Mail]/') else f
 
+
+[Account W3F]
+localrepository = W3FLocal
+remoterepository = W3FRemote
+synclabels = yes
+
+[Repository W3FLocal]
+type = GmailMaildir
+localfolders = ~/Mail/W3F
+nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Trash', 'All Mail', 'Sent Mail'] else f
+
+[Repository W3FRemote]
+type = Gmail
+remoteuser = florian@web3.foundation
+remotepassfile = ~/.config/offlineimap/w3f.pass
+ssl_version = tls1_2
+nametrans = lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f
