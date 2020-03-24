@@ -112,8 +112,12 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
-bindsym $mod+BackSpace exec firefox
+
+# start a web browser
+bindsym $mod+BackSpace       exec firefox
 bindsym $mod+Shift+BackSpace exec firefox --private-window
+
+# start a file browser
 bindsym $mod+Delete exec thunar
 
 # kill focused window
@@ -163,7 +167,7 @@ bindsym $alt+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Switch to workspace
 bindsym $mod+1 workspace 1
@@ -221,16 +225,13 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
-# Keyboard brightness controls
+# Keyboard brightness controls (MacBook specific)
 bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 10
 bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 10
 
 # Change opacity
 bindsym $mod+Equal opacity plus  0.05
 bindsym $mod+Minus opacity minus 0.05
-
-# Toggle trackpad
-bindsym XF86Tools exec $HOME/.local/bin/syntoggle
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
