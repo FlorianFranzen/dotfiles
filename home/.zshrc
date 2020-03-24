@@ -53,7 +53,6 @@ zplug "MichaelAquilina/zsh-you-should-use"
 # Installed programms based plugins
 #zplug "chisui/zsh-nix-shell", if:"hash nix-shell"
 zplug "plugins/pass", from:oh-my-zsh, if:"hash pass"
-#zplug "plugins/taskwarrior", from:oh-my-zsh, if:"hash task"
 zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
 
 # Set up theme
