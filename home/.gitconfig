@@ -28,3 +28,10 @@
 	autoStash = true
 [fetch]
 	recurseSubmodules = on-demand
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	pager = true
