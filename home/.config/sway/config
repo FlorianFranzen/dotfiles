@@ -256,8 +256,8 @@ bindsym $mod+r mode "resize"
 # WINDOWS SETTINGS
 
 # Float Zoom windows
-for_window [title="Zoom.*"] floating enable
-for_window [title="Leave meeting"] floating enable
+for_window [app_id="" title="Zoom.*"] floating enable
+for_window [app_id="" title="Leave meeting"] floating enable
 
 # Float Firefox P-in-P and Sharing Indicator
 for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
