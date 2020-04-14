@@ -26,7 +26,7 @@ alert = ${colors.color8}
 
 ; Hardware variables
 [hardware]
-ethernet = enp0s31f6
+ethernet = enp0s0f0
 wireless = wlp3s0
 
 
@@ -47,7 +47,7 @@ monitor-strict = true
 enable-ipc = true
 
 width = 100%
-height = 36
+height = 20
 
 separator = 
 
@@ -59,8 +59,8 @@ underline-size = 3
 
 border-color = #00ffffff
 
-border-left-size = 20
-border-right-size = 20
+border-left-size = 10
+border-right-size = 10
 
 border-top-size = 0
 border-bottom-size = 0
@@ -72,14 +72,14 @@ module-margin = 1
 ;wm-restack = i3
 ;override-redirect = true
 
-font-0 = InputSansNarrow Nerd Font:size=11;3
+font-0 = Anonymice Nerd Font:size=11;3
 
 [bar/full]
 inherit = bar/common
 
-monitor = ${env:MONITOR:DP2-2}
+monitor = ${env:MONITOR:DP-1}
 
-border-top-size = 20
+border-top-size = 10
 
 modules-left = i3 compton redshift xwindow
 modules-center = mpd
@@ -91,9 +91,9 @@ tray-padding = 5
 [bar/top]
 inherit = bar/common
 
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:LVDS-1}
 
-border-top-size = 20
+border-top-size = 10
 
 fixed-center = true
 
@@ -110,11 +110,11 @@ tray-padding = 2
 [bar/bottom]
 inherit = bar/common
 
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:LVDS-1}
 
 bottom = true
 
-border-bottom-size = 20
+border-bottom-size = 10
 
 fixed-center = true
 
@@ -152,30 +152,30 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-label-mode-padding = 2
-label-mode-foreground = ${colors.foreground-alt}
-label-mode-background = ${colors.background}
+label-mode-padding = 1
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.secondary}
 
 label-focused = %index%
 label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
-label-focused-overline = ${colors.quaternary}
-label-focused-underline = ${colors.quaternary}
-label-focused-padding = 2
+#label-focused-overline = ${colors.quaternary}
+#label-focused-underline = ${colors.quaternary}
+label-focused-padding = 1
 
 label-unfocused = %index%
-label-unfocused-foreground = ${colors.quaternary}
-label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.alert}
+label-unfocused-padding = 1
 
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 label-visible = %index%
-label-visible-background = ${colors.tertiary}
-label-visible-overline = ${colors.secondary}
-label-visible-underline = ${colors.secondary}
-label-visible-padding = 2}
+label-visible-background = ${colors.secondary}
+#label-visible-overline = ${colors.secondary}
+#label-visible-underline = ${colors.secondary}
+label-visible-padding = 1
 
 [module/backlight]
 type = internal/xbacklight
@@ -236,7 +236,7 @@ toggle-off-foreground = ${colors.foreground-alt}
 type = internal/cpu
 interval = 5
 
-format = <ramp-coreload>
+#format = <ramp-coreload>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 

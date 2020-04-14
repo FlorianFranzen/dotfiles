@@ -15,10 +15,10 @@ set_from_resource $color8 i3wm.color8 #808080
 
 # Set up color scheme
 # class                 border  backgr. text    indic.   child_border
-client.focused          $color5 $color0 $color7 $color6  $color4
-client.focused_inactive $color4 $color0 $color7 $color6  $color3
-client.unfocused        $color3 $color0 $color7 $color6  $color2
-client.urgent           $color8 $color0 $color7 $color8  $color6
+client.focused          $color5 $color0 $color7 $color6  $color5
+client.focused_inactive $color4 $color0 $color7 $color6  $color4
+client.unfocused        $color3 $color0 $color7 $color6  $color3
+client.urgent           $color8 $color0 $color7 $color6  $color8
 client.placeholder      $color2 $color0 $color7 $color6  $color1
 
 client.background       $color0
@@ -37,13 +37,13 @@ set $left  h
 set $right l
 
 # Font for window titles.
-font pango:InputSansNarrow Nerd Font 11 
+font pango:Anonymice Nerd Font 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 bindsym $mod+BackSpace exec firefox
 bindsym $mod+Shift+BackSpace exec firefox --private-window
 bindsym $mod+Delete exec thunar
@@ -52,8 +52,8 @@ bindsym $mod+Delete exec thunar
 bindsym $mod+Shift+q kill
 
 # start rofi
-bindsym $mod+space exec rofi -show run
-bindsym $mod+d     exec rofi -show drun
+bindsym $mod+space exec rofi -show drun
+bindsym $mod+d     exec rofi -show run
 
 # start clerk
 bindsym $mod+m exec clerk
@@ -146,8 +146,16 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPlay exec mpc toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+# Keyboard brightness controls (MacBook specific)
+bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 10
+bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 10
 
 # Toggle trackpad
 bindsym XF86Tools exec $HOME/.local/bin/syntoggle
@@ -180,15 +188,15 @@ bindsym $mod+r mode "resize"
 for_window [workspace=10] floating enable
 
 # Set up border around windows
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
 # Mouse settings
 focus_follows_mouse no
 
 # Set up gaps
-gaps inner 20
+gaps inner 10
 gaps outer 0 
 
 # Last but not least, run startup scripts
-exec $HOME/.config/startr/host.sh
+#exec $HOME/.config/startr/host.sh
