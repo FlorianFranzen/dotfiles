@@ -210,6 +210,9 @@ bindsym $mod+Shift+t exec wal --iterative -i ~/.wallpapers -o ~/.config/sway/pos
 bindsym $mod+Print exec $HOME/.config/sway/screenshot.sh
 bindsym $mod+Shift+Print exec $HOME/.config/sway/selectshot.sh
 
+bindsym $mod+XF86LaunchA exec $HOME/.config/sway/screenshot.sh
+bindsym $mod+Shift+XF86LaunchA exec $HOME/.config/sway/selectshot.sh
+
 # Volume control
 bindsym XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
 bindsym XF86AudioRaiseVolume exec $HOME/.config/polybar/pavol.sh --up
