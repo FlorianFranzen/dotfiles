@@ -42,8 +42,6 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 export HOMESHICK_DIR="$HOME/.zplug/repos/andsens/homeshick/"
 fpath=("${HOMESHICK_DIR}/completions" $fpath)
 zplug "andsens/homeshick", use:"homeshick.sh"
-zplug "ingydotnet/git-subrepo", use:".rc"
-zplug "raylee/tldr", from:github, as:command, use:"tldr"
 
 # On "probation"
 #zplug "zsh-users/zaw"
@@ -51,7 +49,6 @@ zplug "raylee/tldr", from:github, as:command, use:"tldr"
 zplug "MichaelAquilina/zsh-you-should-use"
 
 # Installed programms based plugins
-#zplug "chisui/zsh-nix-shell", if:"hash nix-shell"
 zplug "plugins/pass", from:oh-my-zsh, if:"hash pass"
 zplug "plugins/docker", from:oh-my-zsh, if:"hash docker"
 
