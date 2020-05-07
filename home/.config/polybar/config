@@ -81,7 +81,7 @@ monitor = ${env:MONITOR:DP-1}
 
 border-top-size = 10
 
-modules-left = i3 compton redshift xwindow
+modules-left = i3 picom redshift xwindow
 modules-center = mpd
 modules-right = cpu temp mem fs lan wlan vol date
 
@@ -97,7 +97,7 @@ border-top-size = 10
 
 fixed-center = true
 
-modules-left = i3 compton redshift
+modules-left = i3 picom redshift
 modules-center = xwindow
 modules-right = vol bat0 bat1 date
 
@@ -370,12 +370,12 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
 
-[module/compton]
+[module/picom]
 type = custom/script
 interval = 5
 
-exec = ~/.config/polybar/compton.sh
-click-left = ~/.config/polybar/compton-toggle.sh
+exec = ~/.config/polybar/picom.sh
+click-left = ~/.config/polybar/picom-toggle.sh
 
 [module/redshift]
 type = custom/script

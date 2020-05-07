@@ -8,7 +8,7 @@ fi
 #The icon that would change color
 icon=""
 
-if systemctl is-active --user --quiet compton; then
+if systemctl is-active --user --quiet picom; then
   echo "%{F$color7}$icon"
 else
   echo "%{F$color8}$icon"
