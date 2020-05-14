@@ -14,27 +14,38 @@ client.urgent           $color8 $color0 $color7 $color6  $color8
 
 set $gap 10
 
-set $font  'Anonymice Nerd Font 11'
-set $icons 'elementary Xfce'
+set $font   'Anonymice Nerd Font 11'
+set $icons  'elementary Xfce'
+set $theme  'NumixSolarizedDarkCyan'
+set $cursor 'Numix-Cursor'
 
 # GTK THEME SETTINGS
 
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'NumixSolarizedDarkGreen'
-    gsettings set $gnome-schema cursor-theme 'Numix-Cursor'
+    gsettings set $gnome-schema gtk-theme $theme
+    gsettings set $gnome-schema cursor-theme $cursor
     gsettings set $gnome-schema icon-theme $icons
     gsettings set $gnome-schema font-name $font
     gsettings set $gnome-schema document-font-name $font
     gsettings set $gnome-schema monospace-font-name $font
+
+    gsettings set $gnome-schema gtk-enable-primary-paste false
 }
+
+seat * xcursor_theme $cursor
 
 # INPUT SETTINGS
 
 input * {
   xkb_layout "us"
   xkb_options "compose:ralt, terminate:ctrl_alt_bksp"
+  xkb_numlock enabled
+  
+  natural_scroll enabled
+  scroll_method two_finger
+  tap disabled
 }
 
 # OUTPUT SETTINGS
@@ -214,23 +225,24 @@ bindsym $mod+XF86LaunchA exec $HOME/.config/sway/screenshot.sh
 bindsym $mod+Shift+XF86LaunchA exec $HOME/.config/sway/selectshot.sh
 
 # Volume control
-bindsym XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
-bindsym XF86AudioRaiseVolume exec $HOME/.config/polybar/pavol.sh --up
-bindsym XF86AudioMute exec $HOME/.config/polybar/pavol.sh --toggle
+bindsym --locked XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
+bindsym --locked XF86AudioRaiseVolume exec $HOME/.config/polybar/pavol.sh --up
+bindsym --locked XF86AudioMute exec $HOME/.config/polybar/pavol.sh --toggle
+
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # MPD control
-bindsym XF86AudioPrev exec mpc prev
-bindsym XF86AudioNext exec mpc next
-bindsym XF86AudioPlay exec mpc toggle
+bindsym --locked XF86AudioPrev exec mpc prev
+bindsym --locked XF86AudioNext exec mpc next
+bindsym --locked XF86AudioPlay exec mpc toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
+bindsym --locked XF86MonBrightnessUp exec light -A 10
+bindsym --locked XF86MonBrightnessDown exec light -U 10
 
 # Keyboard brightness controls (MacBook specific)
-bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 10
-bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 10
+bindsym --locked XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 10
+bindsym --locked XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 10
 
 # Change opacity
 bindsym $mod+Equal opacity plus  0.05
