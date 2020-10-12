@@ -46,7 +46,7 @@ synclabels = yes
 [Repository W3FLocal]
 type = GmailMaildir
 localfolders = ~/Mail/W3F
-nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Trash', 'All Mail', 'Sent Mail'] else f
+nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Bin', 'All Mail', 'Sent Mail'] else f
 
 [Repository W3FRemote]
 type = Gmail
