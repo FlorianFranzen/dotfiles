@@ -1,0 +1,7 @@
+#font="Anonymice Nerd Font 11"
+
+background-color={background}CC
+text-color={foreground}CC
+border-color={color2}CC
+
+default-timeout=30000
