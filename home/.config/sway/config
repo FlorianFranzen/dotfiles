@@ -39,7 +39,7 @@ seat * xcursor_theme $cursor
 # INPUT SETTINGS
 
 input * {
-  xkb_layout "us"
+  xkb_layout "eu"
   xkb_options "compose:ralt, terminate:ctrl_alt_bksp"
   xkb_numlock enabled
   
