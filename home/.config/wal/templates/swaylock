@@ -2,6 +2,7 @@ indicator-radius=100
 indicator-thickness=10
 
 color={color0.strip}FF
+text-color={color7.strip}FF
 inside-color={color0.strip}AA
 ring-color={color4.strip}DD
 line-color={color8.strip}EE
@@ -24,3 +25,10 @@ inside-clear-color={color2.strip}AA
 ring-clear-color={color8.strip}DD
 
 ignore-empty-password
+indicator-caps-lock
+
+clock
+screenshots
+
+fade-in=1
+effect-blur=4x2
