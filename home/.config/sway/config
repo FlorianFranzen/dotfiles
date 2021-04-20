@@ -205,6 +205,10 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+c focus child
 
+# Switch workspaces using mouse
+bindsym --whole-window BTN_BACK workspace prev
+bindsym --whole-window BTN_FORWARD workspace next
+
 # Switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
