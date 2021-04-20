@@ -313,3 +313,6 @@ for_window [app_id="firefox" title=".*Sharing Indicator"] floating enable
 
 # Last but not least, run startup scripts
 #exec $HOME/.config/startr/host.sh
+
+# Initialize systemd user environment
+exec "systemctl --user import-environment"
