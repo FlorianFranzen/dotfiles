@@ -37,6 +37,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
+     (unicode-fonts :variables unicode-fonts-enable-ligatures t)
      (auto-completion :variables
                       auto-completion-use-tab-instead-of-enter t
                       auto-completion-enable-sort-by-usage t)
