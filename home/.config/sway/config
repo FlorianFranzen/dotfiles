@@ -158,9 +158,10 @@ bindsym $mod+Delete exec thunar
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi
-bindsym $mod+space exec rofi -show drun
-bindsym $mod+d     exec rofi -show run
+# wofi integration
+bindsym $mod+space exec wofi --show drun
+bindsym $mod+d     exec wofi --show run
+bindsym $mod+Shift+w exec $HOME/.config/wofi/window.sh
 
 # change focus
 bindsym $mod+$left  focus left

@@ -1,0 +1,6 @@
+allow_images=true
+allow_markup=true
+gtk-dark=true
+image_size=16
+term=alacritty
+key_expand=Alt_L-Tab
