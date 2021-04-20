@@ -56,10 +56,14 @@ values."
      shell-scripts
      octave
      rust
+     julia
+     go
+     javascript
      ;; Markup layes
      markdown
      yaml
      html
+     protobuf
      org
      emacs-lisp
      latex
