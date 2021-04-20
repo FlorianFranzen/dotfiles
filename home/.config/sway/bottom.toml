@@ -1,0 +1,22 @@
+icons = "awesome"
+
+[theme]
+name = "solarized-dark"
+[theme.overrides]
+separator = ""
+
+[[block]]
+block = "bluetooth"
+mac = "00:08:E0:61:ED:29"
+label = " Speaker"
+
+[[block]]
+block = "bluetooth"
+mac = "38:18:4C:D3:F5:A0"
+label = " Headphone"
+
+[[block]]
+block = "music"
+#max_width = 30
+#dynamic_width = "true"
+buttons = ["prev", "play", "next"]
