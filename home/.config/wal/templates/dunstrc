@@ -5,17 +5,18 @@
 
 [global]
     # Color setup
+    frame_color = "{color7}"
     background = "{color0}"
     foreground = "{color7}"
     
-    # Choose screnn by keyboard focus
+    # Choose screen by keyboard focus
     follow = "keyboard"
 
     # Size and position on screen 
     geometry = "640x10-20+76"
 
     # Slight transparency
-    transparency = 10
+    transparency = 20
 
     # Show multiple notifications in the same box
     separator_height = 0
