@@ -249,9 +249,11 @@ bindsym $mod+Shift+t exec wal --iterative -i ~/.wallpapers -o ~/.config/sway/pos
 # Take a screenshot
 bindsym $mod+Print exec $HOME/.config/sway/screenshot.sh
 bindsym $mod+Shift+Print exec $HOME/.config/sway/selectshot.sh
+bindsym $mod+Alt+Print exec $HOME/.config/sway/windowshot.sh
 
 bindsym $mod+XF86LaunchA exec $HOME/.config/sway/screenshot.sh
 bindsym $mod+Shift+XF86LaunchA exec $HOME/.config/sway/selectshot.sh
+bindsym $mod+Alt+XF86LaunchA exec $HOME/.config/sway/windowshot.sh
 
 # Volume control
 bindsym --locked XF86AudioLowerVolume exec $HOME/.config/polybar/pavol.sh --down
