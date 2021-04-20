@@ -263,9 +263,9 @@ bindsym --locked XF86AudioMute exec $HOME/.config/polybar/pavol.sh --toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # MPD control
-bindsym --locked XF86AudioPrev exec mpc prev
-bindsym --locked XF86AudioNext exec mpc next
-bindsym --locked XF86AudioPlay exec mpc toggle
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPlay exec playerctl play-pause
 
 # Screen brightness controls
 bindsym --locked XF86MonBrightnessUp exec light -A 10
