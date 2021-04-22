@@ -6,6 +6,12 @@ function nix-call() {
   nix-build -E "with import <nixpkgs> {}; callPackage $nixfile {}" $@
 }
 
+function nix-cenv() {
+  nixfile="$1"
+  shift
+  nix-env -E "_: with import <nixpkgs> {}; callPackage $nixfile {}" $@
+}
+
 function nix-qtcall() {
   nixfile="$1"
   shift
