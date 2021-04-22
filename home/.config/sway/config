@@ -15,7 +15,7 @@ client.urgent           $color8 $color0 $color7 $color6  $color8
 set $gap 10
 
 set $font   'JetBrainsMono Nerd Font 10'
-set $icons  'elementary Xfce'
+set $icons  'Numix-Square'
 set $theme  'NumixSolarizedDarkCyan'
 set $cursor 'Numix-Cursor'
 
