@@ -26,6 +26,7 @@
 	rebase = preserve
 [rebase]
 	autoStash = true
+	autoSquash = true
 [fetch]
 	recurseSubmodules = on-demand
 [color]
