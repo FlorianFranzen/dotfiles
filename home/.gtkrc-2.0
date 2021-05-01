@@ -1,6 +1,6 @@
-gtk-theme-name="NumixSolarizedDarkCyan"
-gtk-icon-theme-name="elementary-xfce"
-gtk-font-name="Anonymice Nerd Font 11"
+gtk-theme-name="NumixSolarizedDarkGreen"
+gtk-icon-theme-name="Numix-Square"
 gtk-cursor-theme-name="Numix-Cursor"
+gtk-font-name="JetBrainsMono Nerd Font 10"
 gtk-xft-antialias=1
 gtk-enable-primary-paste=false
