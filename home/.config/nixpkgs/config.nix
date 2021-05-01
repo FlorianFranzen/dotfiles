@@ -1,36 +1,8 @@
 {
   allowUnfree = true;
 
-  config = {
-    # Preferred wine config
-    wine = {
-      release = "staging";
-      build = "wineWow";
-    };
-  };
-
-  packageOverrides = pkgs:
-  let
-    wrapXWayland = drv: pkgs.symlinkJoin { 
-      inherit (drv) name version meta;
-      nativeBuildInputs = [ pkgs.makeWrapper ];
-      paths = [ drv ];
-
-      postBuild = ''
-        for bin in $out/bin/*; do
-          echo "- wrapping $bin..."
-          wrapProgram "$bin" \
-            --unset GDK_BACKEND \
-            --set SDL_VIDEODRIVER x
-        done
-      '';
-    };
-  in {
-    # List of application not wayland compatible
-    riot-desktop = wrapXWayland pkgs.riot-desktop;
-    signal-desktop = wrapXWayland pkgs.signal-desktop;
-
-    warzone2100 = wrapXWayland (pkgs.warzone2100.override { withVideos = true; });
+  packageOverrides = pkgs: {
+    ncmpcppWithEyeCandy = pkgs.ncmpcpp.override { visualizerSupport = true; };
 
     # Full featured version of opencv3
     opencv3_enterprise = pkgs.opencv3.override {
