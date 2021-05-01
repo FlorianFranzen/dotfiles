@@ -91,7 +91,7 @@ bar {
     binding_mode       $color0 $color7 $color8
   }
 
-  status_command i3status-rs ~/.config/sway/status.toml
+  status_command i3status-rs ~/.config/sway/top.toml
 }
 
 bar {
