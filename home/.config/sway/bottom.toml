@@ -1,4 +1,4 @@
-icons = "awesome"
+icons = "material-nf"
 
 [theme]
 name = "solarized-dark"
@@ -8,12 +8,12 @@ separator = ""
 [[block]]
 block = "bluetooth"
 mac = "00:08:E0:61:ED:29"
-label = " Speaker"
+format = "Speaker"
 
 [[block]]
 block = "bluetooth"
 mac = "38:18:4C:D3:F5:A0"
-label = " Headphone"
+format = "Headphone"
 
 [[block]]
 block = "music"
