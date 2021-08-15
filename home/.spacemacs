@@ -94,8 +94,10 @@ This function should only modify configuration layer settings."
      pandoc
      (mu4e :variables
            mu4e-installation-path "/run/current-system/sw/share/emacs/site-lisp/mu4e"
+           mu4e-account-alist t
            mu4e-enable-notifications t
-           mu4e-enable-mode-line t)
+           mu4e-enable-mode-line t
+           mu4e-use-fancy-chars t)
      ;; Looks
      (colors :variables
              colors-colorize-identifiers 'variable
@@ -607,6 +609,38 @@ before packages are loaded."
     (setq org-default-notes-file "~/Org/Inbox.org")
     (setq org-agenda-files '("~/Org/"))
     )
+
+  (setq mu4e-maildir "~/Mail"
+        mu4e-sent-messages-behavior 'sent
+        mu4e-sent-folder "/Personal/Sent"
+        mu4e-drafts-folder "/Personal/Drafts"
+        mu4e-trash-folder "/Personal/Trash"
+        mu4e-get-mail-command "offlineimap"
+        mu4e-update-interval nil
+        mu4e-compose-signature-auto-include nil
+        mu4e-view-show-addresses t)
+
+  (setq mu4e-account-alist
+        '(("personal"
+           (mu4e-sent-messages-behavior 'sent)
+           (mu4e-sent-folder "/Personal/Sent")
+           (mu4e-drafts-folder "/Personal/Drafts")
+           (mu4e-trash-folder "/Personal/Trash")
+           (user-mail-address "florian@franzen.io"))
+          ("gmail"
+           (mu4e-sent-messages-behavior 'delete)
+           (mu4e-sent-folder "/Gmail/Sent Mail")
+           (mu4e-drafts-folder "/Gmail/Drafts")
+           (mu4e-trash-folder "/Gmail/Trash")
+           (user-mail-address "florian.franzen@gmail.com"))
+          ("w3f"
+           (mu4e-sent-messages-behavior 'delete)
+           (mu4e-sent-folder "/W3F/Sent Mail")
+           (mu4e-drafts-folder "/W3F/Drafts")
+           (mu4e-trash-folder "/W3F/Bin")
+           (user-mail-address "florian@web3.foundation"))
+         ))
+  (mu4e/mail-account-reset)
 
   (with-eval-after-load 'mu4e-alert
     ;; Enable Desktop notifications
