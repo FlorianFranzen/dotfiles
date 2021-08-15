@@ -10,7 +10,6 @@
 # precedence is given in order of apparition in this file.
 
 "alacritty" = ""
-"github" = ""
 "picture-in-picture" = ""
 "private browsing" = ""
 "firefox" = ""
@@ -31,7 +30,10 @@
 "mpv" = ""
 "music" = ""
 "steam" = ""
+"skype" = ""
 "disk usage" = ""
 "documents" = ""
 ".pdf" = ""
-"*" = ""
+
+[other]
+"fallback_icon" = ""
