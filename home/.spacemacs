@@ -610,6 +610,11 @@ before packages are loaded."
     (setq org-agenda-files '("~/Org/"))
     )
 
+  (defun org-babel-execute:nix (body params)
+    "Execute a block of Nix code with org-babel."
+    (org-babel-eval
+     (format "nix eval --expr '%s'" body) ""))
+
   (setq mu4e-maildir "~/Mail"
         mu4e-sent-messages-behavior 'sent
         mu4e-sent-folder "/Personal/Sent"
