@@ -1,6 +1,8 @@
 {
   allowUnfree = true;
 
+  segger-jlink.acceptLicense = true;
+
   packageOverrides = pkgs: {
     swaylock-effects = pkgs.swaylock-effects.overrideAttrs (old: {
       src = pkgs.fetchFromGitHub {
