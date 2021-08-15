@@ -21,14 +21,14 @@ format_swap = "{swap_used_percents}"
 [[block]]
 block = "disk_space"
 path = "/"
-format = "{icon} {available} ({percentage})"
+format = "{icon} {available} {percentage}"
 interval = 20
 warning = 20.0
 alert = 10.0
 
 [[block]]
 block = "net"
-device = "eth0"
+device = "wlp3s0"
 format = "{ssid}"
 format_alt = "{ip} {ipv6}"
 interval = 5
